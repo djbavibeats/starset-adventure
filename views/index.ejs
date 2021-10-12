@@ -1,1 +1,87 @@
-<h1>Website</h1>
+<!DOCTYPE html>
+<html>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script>
+    window.onload = function () {
+        let r = Math.floor(Math.random() * (0 - 10) + 10);
+        console.log(r);
+        let queryString = "";
+        switch(r) {
+            case 0: case 1: case 2: case 3:
+                queryString = "/island"
+                break;
+            case 4: case 5: case 6: case 7:
+                queryString = "/mall"
+                break;
+            case 8: case 9: case 10:
+                queryString = "/plaza"
+                break;
+            default:
+                queryString = "/island"
+                break;
+        }
+        console.log(queryString);
+        document.querySelector(".activate-button").addEventListener("click", function () {
+          window.location.href = queryString
+        });
+    };
+  </script>
+  <style>
+    .modal {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      background: rgba(0,0,0,.5);
+
+    }
+
+
+    .modal-content {
+        width: 50%;
+        border: 1px solid #1226AA;
+        border-radius: 25px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        padding: 50px;
+        text-align: center;
+        color: white;
+        background: rgba(0,0,0,.75);
+    }
+
+    .activate-button {
+      padding: 15px;
+      border-radius: 7px;
+      border: 1px solid #1226AA;
+      background: rgba(0,0,0,.5);
+      color: white;
+      /* width: 125px; */
+      /* width: 4em; */
+      /* height: 2em; */
+    }
+  </style>
+  <body style="margin : 0px; overflow: hidden;">
+    <div class="modal">
+        <div class="modal-content">
+            <p>Welcome to the BMI Beta test. Please press the button below to initialize your experience.</p>
+            <button class="activate-button">ACTIVATE VACATION MODE</button>
+        </div>
+    </div>
+
+    <a-scene embedded arjs>
+      <a-marker preset="hiro">
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>

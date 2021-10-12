@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <style>
+      .hud-overlay {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin: mouse">
+        <a-assets>  
+            <img id="sky" src="mall.jpg">
+        </a-assets>
+        <a-sky src="#sky"></a-sky>
+        <!-- <a-plane position="0 1 -10" rotation="0 0 0" width="4" height="4" id="plane" color="#7BC8A4"></a-plane> -->
+    </a-scene>
+  </body>
+
+  <script>
+      document.getElementById('plane').addEventListener('click', () => {
+
+      })
+  </script>
+</html>
