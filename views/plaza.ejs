@@ -18,7 +18,7 @@
         <a-assets>  
             <video id="video" autoplay loop="true" src="beach.mp4" webkit-playsinline muted></video>
             <!-- <img id="plaza" src="plaza.jpg"> -->
-            <!-- <a-asset-item id="globe" src="/3d/scene.gltf"></a-asset-item> -->
+            <a-asset-item id="globe" src="/3d/scene.gltf"></a-asset-item>
         </a-assets>
 
         <!-- Background -->
@@ -27,7 +27,7 @@
         <a-videosphere id="videoSphere" src="#video" muted></a-videosphere>
 
         <!-- Globe -->
-        <!-- <a-entity 
+        <a-entity 
             id="globe" 
             class="globe"
             position="-95 5 0" 
@@ -35,15 +35,15 @@
             scale=".25 .25 .25" 
             modify-materials  
             animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear;">
-        </a-entity> -->
+        </a-entity>
     </a-scene>
   </body>
 
   <script>
-    document.querySelector('.globe').addEventListener('click', () => {
-      console.log("Found!")
+    // document.querySelector('.globe').addEventListener('click', () => {
+    //   console.log("Found!")
 
-    })
+    // })
 
     document.addEventListener("DOMContentLoaded", function(event) {
     var scene = document.querySelector("a-scene");
