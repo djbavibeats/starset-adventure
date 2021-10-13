@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <meta name="apple-mobile-web-app-capable" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <link rel="stylesheet" href="/main.css">
+
     <style>
       .hud-overlay {
         position: absolute;
@@ -11,18 +14,56 @@
     </style>
   </head>
   <body>
-    <a-scene cursor="rayOrigin: mouse">
+    <a-scene class="a-scene" cursor="rayOrigin: mouse">
         <a-assets>  
-            <img id="sky" src="plaza.jpg">
+            <video id="video" autoplay loop="true" src="beach.mp4" webkit-playsinline muted></video>
+            <!-- <img id="plaza" src="plaza.jpg"> -->
+            <a-asset-item id="globe" src="/3d/scene.gltf"></a-asset-item>
         </a-assets>
-        <a-sky src="#sky"></a-sky>
-        <!-- <a-plane position="0 1 -10" rotation="0 0 0" width="4" height="4" id="plane" color="#7BC8A4"></a-plane> -->
+
+        <!-- Background -->
+        <!-- <a-sky src="#plaza"></a-sky> -->
+
+        <a-videosphere id="videoSphere" src="#video" muted></a-videosphere>
+
+        <!-- Globe -->
+        <a-entity 
+            id="globe" 
+            class="globe"
+            position="-95 5 0" 
+            gltf-model="#globe" 
+            scale=".25 .25 .25" 
+            modify-materials  
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear;">
+        </a-entity>
     </a-scene>
   </body>
 
   <script>
-      document.getElementById('plane').addEventListener('click', () => {
+    document.querySelector('.globe').addEventListener('click', () => {
+      console.log("Found!")
 
-      })
-  </script>
+    })
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+    var scene = document.querySelector("a-scene");
+    var vid = document.getElementById("video");
+    var videoShere = document.getElementById("videoShere");
+
+    if (scene.hasLoaded) {
+      run();
+    } else {
+      scene.addEventListener("loaded", run);
+    }
+
+    function run () {
+     playVideo();
+    }
+
+    function playVideo () {
+      vid.play();
+      videoShere.components.material.material.map.image.play();
+    }
+  })
+</script>
 </html>
