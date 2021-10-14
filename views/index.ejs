@@ -2,6 +2,8 @@
 <html>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="/main.css">
 
   <script>
@@ -33,21 +35,26 @@
    
 
     .activate-button {
-      padding: 15px;
+      /* padding: 15px;
       border-radius: 7px;
       border: 1px solid #1226AA;
       background: rgba(0,0,0,.5);
-      color: white;
+      color: white; */
+      /* background: url('activate.png'); */
       /* width: 125px; */
       /* width: 4em; */
       /* height: 2em; */
+      width: 100px;
+      height: auto;
+      margin: 0 auto;
     }
   </style>
   <body style="margin : 0px; overflow: hidden;">
     <div class="modal">
         <div class="modal-content">
             <p>Welcome to the BMI Beta test. Please press the button below to initialize your experience.</p>
-            <button class="activate-button">ACTIVATE VACATION MODE</button>
+            <!-- <button class="activate-button"></button> -->
+            <img class="activate-button" src="activate.png"></img>
         </div>
     </div>
 

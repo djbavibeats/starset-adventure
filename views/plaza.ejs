@@ -3,6 +3,9 @@
   <head>
       <meta name="apple-mobile-web-app-capable" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/main.css">
 
     <style>
@@ -10,20 +13,24 @@
         position: absolute;
         z-index: 1;
         width: 100%;
+        pointer-events: none;
       }
     </style>
   </head>
   <body>
+    <img id="hud" src="hud.png" class="hud-overlay" />
     <a-scene class="a-scene" cursor="rayOrigin: mouse">
         <a-assets>  
-            <video id="video" autoplay loop="true" src="beach.mp4" webkit-playsinline muted></video>
+          <img id="vacation-mode" src="vacation_mode.png" />
+          <img id="vacation-mode" src="hud.png" />
+          <video id="video" autoplay loop="true" src="beach.mp4" webkit-playsinline muted></video>
             <!-- <img id="plaza" src="plaza.jpg"> -->
             <!-- <a-asset-item id="globe" src="/3d/scene.gltf"></a-asset-item> -->
         </a-assets>
 
         <!-- Background -->
         <!-- <a-sky src="#plaza"></a-sky> -->
-
+        <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position=".7 3.25 -3" rotation="20 0 0"></a-image>
         <a-videosphere id="videoSphere" src="#video" muted></a-videosphere>
 
         <!-- Globe -->
@@ -40,10 +47,13 @@
   </body>
 
   <script>
-    // document.querySelector('.globe').addEventListener('click', () => {
-    //   console.log("Found!")
+    document.querySelector('.vacationMode').addEventListener('click', () => {
+      console.log("Found!")
+      document.getElementById('vacationMode').remove()
+      document.getElementById('hud').style.display = 'none';
+      // console.log(document.getElementById())
 
-    // })
+    })
 
     document.addEventListener("DOMContentLoaded", function(event) {
     var scene = document.querySelector("a-scene");

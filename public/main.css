@@ -28,3 +28,14 @@
       color: white;
       background: rgba(0,0,0,.75);
   }
+
+  html, body, button {
+    font-family: 'Source Code Pro';
+  }
+
+  .hud-overlay {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    pointer-events: none;
+  }
