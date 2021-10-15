@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- <script src="aframe.js"></script> -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="/main.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/main.css">
+
+    <style>
+      .hud-overlay {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        pointer-events: none;
+      }
+
+      .try-again {
+        position: absolute;
+        margin: 0 auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        margin-top: 50%;
+        width: 85%;
+        display: none;
+      }
+      
+      .success {
+        position: absolute;
+        margin: 0 auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        margin-top: 50%;
+        width: 85%;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="try-again" src="try_again.png" /> 
+    <img class="success" src="success.png" /> 
+    <img id="hud" src="hud.png" class="hud-overlay" />
+    <div class="spotify-modal">
+      <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO07VZe0" width="100%" height="90%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>      
+      <button class="spotify-close-button" onclick="closeModal();">Close</button>
+    </div>
+    <div onclick="openModal();" class="spotify-open-button">OPEN MUSIC</div>
+    <a-scene class="a-scene" cursor="rayOrigin: mouse; fuseTimeout: 0;" loading-screen="dotsColor: white; backgroundColor: black" vr-mode-ui="enabled: false" vr-mode-ui="enabled: false">
+        <a-assets>  
+          <img id="vacation-mode" src="vacation_mode.png" />
+          <img id="vacation-mode" src="hud.png" />
+          <video id="video" autoplay loop="true" webkit-playsinline muted src="" type="application/x-mpegURL"  ></video>
+        </a-assets>
+        <!-- Background -->
+        <a-camera look-controls-enabled="true" 
+        ></a-camera>
+        <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position=".7 3.25 -3" rotation="20 0 0"></a-image>
+        <a-box onclick="boatShow(false);" class="boatOne" visible="false" height="16" width="4.25" depth=".3" position="7.5 -4 -7.5" rotation="90 7 0"></a-box>
+        <a-box onclick="boatShow(true);" class="boatTwo" visible="false" height="13" width="3.5" depth=".3" position="5.5 -4 -27" rotation="90 7 0"></a-box>
+        <a-box onclick="boatShow(false);" class="boatThree" visible="false" height="16.7" width="5.5" depth="2.36" position="30 -5 -30" rotation="90 7 0"></a-box>
+        <a-box onclick="boatShow(false);" class="boatFour" visible="false" height="16.7" width="5.5" depth="2.36" position="30 -4.6 -3" rotation="94 7 0"></a-box>
+        <a-videosphere ios-video-fix id="videoSphere" src="#video"  muted></a-videosphere>
+    </a-scene>
+  </body>
+
+  <!-- boat ride -->
+
+<script>
+    document.querySelector('.vacationMode').addEventListener('click', function() {
+      console.log("Found!")
+      document.getElementById('vacationMode').remove()
+      document.getElementById('hud').style.display = 'none';
+    })
+
+    const success = new Audio('success.mp3');
+
+    function boatShow(boat) {
+        if (!boat) {
+          console.log("incorrect")
+          new Audio('error.mp3').play();
+          document.querySelector('.try-again').style.display = 'block'; 
+          setTimeout(() => {
+            document.querySelector('.try-again').style.display = 'none'; 
+          }, 1000)
+        } else {
+          console.log("correct")
+          success.play();
+          document.querySelector('.success').style.display = 'block'; 
+          setTimeout(() => {
+            document.querySelector('.success').style.display = 'none'; 
+            window.location.href = "/village-two";
+          }, 2500)
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+    var scene = document.querySelector("a-scene");
+    var vid = document.getElementById("video");
+    var videoSphere = document.getElementById("videoSphere");
+
+    if (scene.hasLoaded) {
+      run();
+    } else {
+      scene.addEventListener("loaded", run);
+    }
+
+    function run () {
+     playVideo();
+    }
+
+    function playVideo () {
+      var video = document.getElementById('video');
+      if(Hls.isSupported()) {
+          var hls = new Hls();
+          hls.loadSource('https://videodelivery.net/a579954c639d88b8b0afdd40ad168b82/manifest/video.m3u8');
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED,function() {   
+              video.play();    
+              videoSphere.components.material.material.map.image.play();
+          });
+      } else {
+          video.src = 'https://videodelivery.net/a579954c639d88b8b0afdd40ad168b82/manifest/video.m3u8';
+          video.addEventListener('canplay',function() {
+            video.play();
+            videoSphere.components.material.material.map.image.play();
+          });
+      }
+    }
+
+
+  })
+</script>
+</html>

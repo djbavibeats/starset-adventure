@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- <script src="aframe.js"></script> -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="/main.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/main.css">
+
+  </head>
+  <body>
+    <img id="hud" src="hud.png" class="hud-overlay" />
+    <div class="spotify-modal">
+      <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO07VZe0" width="100%" height="90%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>      
+      <button class="spotify-close-button" onclick="closeModal();">Close</button>
+    </div>
+    <div onclick="openModal();" class="spotify-open-button">OPEN MUSIC</div>
+    <a-scene class="a-scene" cursor="rayOrigin: mouse; fuseTimeout: 0;" loading-screen="dotsColor: white; backgroundColor: black" vr-mode-ui="enabled: false">
+      <a-assets>  
+          <img id="vacation-mode" src="vacation_mode.png" />
+          <img id="vacation-mode" src="hud.png" />
+          <img id="studio" src="studio.png" />
+          <video id="wall_video" autoplay loop="true" src="wall_video.mp4" muted></video>
+        </a-assets>
+        <!-- Background -->
+        <a-video position="15 2 0" rotation="0 -90 0" height="7.20" width="12.80" src="#wall_video" id="wall_video"></a-video>
+        <a-camera look-controls-enabled="true" look-controls="touchEnabled: false"></a-camera>
+        <!-- <a-plane visible="false" onclick="openWebsite();" position="-10 3.45 -3" width="1.5" height="1.75" rotation="0 75 0"></a-plane> -->
+
+        <a-sky src="#studio"></a-sky>
+
+    </a-scene>
+  </body>
+
+<script>
+    document.getElementById('wall_video').play();
+    function openWebsite() {
+      window.open("https://starsetonline.com", '_blank').focus();
+    }
+
+    document.querySelector('.vacationMode').addEventListener('click', () => {
+      console.log("Found!")
+      document.getElementById('vacationMode').remove()
+      document.getElementById('hud').style.display = 'none';
+    })
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+    var scene = document.querySelector("a-scene");
+    var vid = document.getElementById("video");
+    var videoSphere = document.getElementById("videoSphere");
+
+    if (scene.hasLoaded) {
+      run();
+    } else {
+      scene.addEventListener("loaded", run);
+    }
+
+    function run () {
+     playVideo();
+    }
+
+    function playVideo () {
+      var video = document.getElementById('video');
+      if(Hls.isSupported()) {
+          var hls = new Hls();
+          hls.loadSource('https://videodelivery.net/c6b6c235f397a922558d258e201cee8b/manifest/video.m3u8');
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED,function() {   
+              video.play();    
+              videoSphere.components.material.material.map.image.play();
+          });
+      } else {
+          video.src = 'https://videodelivery.net/c6b6c235f397a922558d258e201cee8b/manifest/video.m3u8';
+          video.addEventListener('canplay',function() {
+            video.play();
+            videoSphere.components.material.material.map.image.play();
+          });
+      }
+    }
+
+
+  })
+</script>
+</html>

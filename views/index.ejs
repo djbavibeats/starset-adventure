@@ -8,21 +8,27 @@
 
   <script>
     window.onload = function () {
-        let r = Math.floor(Math.random() * (0 - 10) + 10);
+        let r = Math.floor(Math.random() * (0 - 31) + 31);
         console.log(r);
         let queryString = "";
         switch(r) {
-            case 0: case 1: case 2: case 3:
+            case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:
+                queryString = "/village-one"
+                break;
+            case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19:
+                queryString = "/park"
+                break;
+            case 20: case 21: case 23: case 24: case 25:
+                queryString = "/beach"
+                break;
+            case 26: case 27: case 28: case 29: case 30:
                 queryString = "/island"
                 break;
-            case 4: case 5: case 6: case 7:
-                queryString = "/mall"
-                break;
-            case 8: case 9: case 10:
-                queryString = "/plaza"
+            case 31:
+                queryString = "/arctic"
                 break;
             default:
-                queryString = "/island"
+                queryString = "/village-one"
                 break;
         }
         console.log(queryString);
@@ -35,33 +41,30 @@
    
 
     .activate-button {
-      /* padding: 15px;
-      border-radius: 7px;
-      border: 1px solid #1226AA;
-      background: rgba(0,0,0,.5);
-      color: white; */
-      /* background: url('activate.png'); */
-      /* width: 125px; */
-      /* width: 4em; */
-      /* height: 2em; */
       width: 100px;
       height: auto;
       margin: 0 auto;
+      position: absolute;
+      top: 45%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
     }
   </style>
   <body style="margin : 0px; overflow: hidden;">
-    <div class="modal">
-        <div class="modal-content">
-            <p>Welcome to the BMI Beta test. Please press the button below to initialize your experience.</p>
+    <!-- <div class="modal"> -->
+        <!-- <div class="modal-content"> -->
+            <!-- <p>Welcome to the BMI Beta test. Please press the button below to initialize your experience.</p> -->
             <!-- <button class="activate-button"></button> -->
             <img class="activate-button" src="activate.png"></img>
-        </div>
-    </div>
+        <!-- </div> -->
+    <!-- </div> -->
 
     <a-scene embedded arjs vr-mode-ui="enabled: false">
       <a-marker preset="hiro">
       </a-marker>
-      <a-entity camera></a-entity>
+      <a-camera look-controls-enabled="true" look-controls="touchEnabled: false;"></a-camera>
     </a-scene>
   </body>
 </html>
