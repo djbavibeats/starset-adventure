@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/28fbef8869.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/main.css">
+  <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background: black;
+        color: white;
+        font-size: 18px;
+    }
+
+    .logo {
+        margin: 0 auto;
+        margin-top: 100px;
+        margin-bottom: 100px;
+        display: flex;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 65%;
+        margin: 0 auto;
+    }
+
+    input {
+        margin-bottom: 25px;
+        background: none;
+        border: 1px solid blue;
+        border-radius: 7px;
+        padding: 15px;
+        font-family: 'Source Code Pro';
+        color: white;
+        font-size: 30px;
+    }
+
+    button {
+        margin-bottom: 25px;
+        background: none;
+        border: 1px solid blue;
+        border-radius: 7px;
+        padding: 15px;
+        font-family: 'Source Code Pro';
+        color: white;
+        font-size: 30px;
+    }
+
+    input[type="file"] {
+        border: none;
+        margin: 0 auto;
+        margin-bottom: 25px;
+    }
+
+    #file-upload-button {
+        margin-right: 25px;
+    }
+  </style>
+
+ <body style="margin : 0px; padding: 0px;">
+    <img class="logo" src="logo.png">
+    <form>
+        <input placeholder="Your Name" />
+        <input placeholder="Caption" />
+        <input type="file"></input>
+        <button>SUBMIT</button>
+    </form>
+</body>
+    <script src="main.js"></script>
+
+</html>

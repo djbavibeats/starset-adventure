@@ -14,21 +14,27 @@
   <body>
     <img id="hud" src="hud.png" class="hud-overlay" />
     <div class="spotify-modal">
-      <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO07VZe0" width="100%" height="90%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>      
+      <iframe src="https://open.spotify.com/embed/playlist/6K1onH2oluQQegbkydUBMw?theme=0" width="100%" height="90%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
       <button class="spotify-close-button" onclick="closeModal();">Close</button>
     </div>
     <div onclick="openModal();" class="spotify-open-button">OPEN MUSIC</div>
+    <div onclick="exitModal();" class="exit-button">EXIT</div>
+
     <a-scene class="a-scene" cursor="rayOrigin: mouse; fuseTimeout: 0;" loading-screen="dotsColor: white; backgroundColor: black" vr-mode-ui="enabled: false">
       <a-assets>  
           <img id="vacation-mode" src="vacation_mode.png" />
           <img id="vacation-mode" src="hud.png" />
           <img id="studio" src="studio.png" />
-          <video id="wall_video" autoplay loop="true" src="wall_video.mp4" muted></video>
+          <video id="right_wall_video" autoplay playsinline loop="true" src="right_wall_video.mp4" muted></video>
+          <video id="left_wall_video" autoplay playsinline loop="true" src="left_wall_video.mp4" muted></video>
+          <video id="center_wall_video" autoplay playsinline loop="true" src="center_wall_video.mp4" muted></video>
         </a-assets>
         <!-- Background -->
-        <a-video position="15 2 0" rotation="0 -90 0" height="7.20" width="12.80" src="#wall_video" id="wall_video"></a-video>
+        <a-video position="15 2 0" rotation="0 -90 0" height="7.20" width="12.80" src="#right_wall_video" class="right_wall_video" id="right_wall_video"></a-video>
+        <a-video position="-15 2 0" rotation="0 90 0" height="7.20" width="12.80" src="#left_wall_video" class="left_wall_video" id="left_wall_video"></a-video>
+        <a-video position="0 2 -25" rotation="0 0 0" height="7.20" width="12.80" src="#center_wall_video" class="center_wall_video" id="center_wall_video"></a-video>
+
         <a-camera look-controls-enabled="true" look-controls="touchEnabled: false"></a-camera>
-        <!-- <a-plane visible="false" onclick="openWebsite();" position="-10 3.45 -3" width="1.5" height="1.75" rotation="0 75 0"></a-plane> -->
 
         <a-sky src="#studio"></a-sky>
 
@@ -36,16 +42,25 @@
   </body>
 
 <script>
-    document.getElementById('wall_video').play();
+    document.getElementById('right_wall_video').play();
+    document.getElementById('left_wall_video').play();
+    document.getElementById('center_wall_video').play();
+
+    document.querySelector('.left_wall_video').addEventListener('click', function () {
+      window.open("https://www.youtube.com/watch?v=cWkbUMQ4-88", '_blank').focus();
+    })
+
+    document.querySelector('.center_wall_video').addEventListener('click', function () {
+      window.open("https://www.youtube.com/watch?v=6Od_dO3ENJo", '_blank').focus();
+    })
+
+    document.querySelector('.right_wall_video').addEventListener('click', function () {
+      window.open("https://www.youtube.com/watch?v=ggCkN3Sve9w", '_blank').focus();
+    })
+
     function openWebsite() {
       window.open("https://starsetonline.com", '_blank').focus();
     }
-
-    document.querySelector('.vacationMode').addEventListener('click', () => {
-      console.log("Found!")
-      document.getElementById('vacationMode').remove()
-      document.getElementById('hud').style.display = 'none';
-    })
 
     document.addEventListener("DOMContentLoaded", function(event) {
     var scene = document.querySelector("a-scene");
@@ -84,4 +99,6 @@
 
   })
 </script>
+<!-- <script src="vacayMode.js"></script> -->
+
 </html>

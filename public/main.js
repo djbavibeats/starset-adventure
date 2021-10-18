@@ -15,3 +15,7 @@ AFRAME.registerComponent('ios-video-fix', {
   function closeModal() {
     document.querySelector('.spotify-modal').style.display = 'none';
   }
+
+  function exitModal() {
+    window.location.href = "/exit"
+  }

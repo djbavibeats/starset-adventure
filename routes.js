@@ -38,4 +38,12 @@ router.get("/arctic", function(req, res) {
   res.render("arctic");
 })
 
+router.get("/exit", function(req, res) {
+  res.render("exit");
+})
+
+router.get("/submission", function(req, res) {
+  res.render("submission");
+})
+
 module.exports = router;
