@@ -25,6 +25,9 @@
           <img id="vacation-mode" src="vacation_mode.png" />
           <img id="vacation-mode" src="hud.png" />
           <img id="studio" src="studio.png" />
+          <img id="digital_museum_sign" src="digital_museum_sign.png" />
+          <img id="back_to_vacation_sign" src="back_to_vacation_sign.png" />
+          <img id="starset_logo" src="black_star.png" />
           <video id="right_wall_video" autoplay playsinline loop="true" src="right_wall_video.mp4" muted></video>
           <video id="left_wall_video" autoplay playsinline loop="true" src="left_wall_video.mp4" muted></video>
           <video id="center_wall_video" autoplay playsinline loop="true" src="center_wall_video.mp4" muted></video>
@@ -33,8 +36,10 @@
         <a-video position="15 2 0" rotation="0 -90 0" height="7.20" width="12.80" src="#right_wall_video" class="right_wall_video" id="right_wall_video"></a-video>
         <a-video position="-15 2 0" rotation="0 90 0" height="7.20" width="12.80" src="#left_wall_video" class="left_wall_video" id="left_wall_video"></a-video>
         <a-video position="0 2 -25" rotation="0 0 0" height="7.20" width="12.80" src="#center_wall_video" class="center_wall_video" id="center_wall_video"></a-video>
-
-        <a-camera look-controls-enabled="true" look-controls="touchEnabled: false"></a-camera>
+        <a-image position="7 2 20" rotation="0 180 0" scale="4.36 2 1" src="#digital_museum_sign" class="digital_museum_sign" id="digital_museum_sign"></a-image>
+        <a-image position="-7 2 20" rotation="0 180 0" scale="4.36 2 1" src="#back_to_vacation_sign" class="back_to_vacation_sign" id="back_to_vacation_sign"></a-image>
+        <a-image position="0 2.5 20" rotation="0 180 0" scale="2.25 2.25 2.25" src="#starset_logo" class="starset_logo" id="starset_logo"></a-image>
+        <a-camera look-controls-enabled="true"></a-camera>
 
         <a-sky src="#studio"></a-sky>
 
@@ -56,6 +61,45 @@
 
     document.querySelector('.right_wall_video').addEventListener('click', function () {
       window.open("https://www.youtube.com/watch?v=ggCkN3Sve9w", '_blank').focus();
+    })
+
+    document.querySelector('.starset_logo').addEventListener('click', function () {
+      window.open("https://starsetonline.com", '_blank').focus();
+    })
+
+    document.querySelector('.back_to_vacation_sign').addEventListener('click', function() {
+      let r = Math.floor(Math.random() * (0 - 31) + 31);
+      console.log(r);
+      let queryString = "";
+      switch(r) {
+            case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:
+                queryString = "/arctic"
+                break;
+            case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19:
+                queryString = "/park"
+                break;
+            case 20: case 21: case 23: case 24: case 25: case 26: case 27:
+                queryString = "/village-one"
+                break;
+            case 28: case 29: case 30: case 30: case 31:
+                queryString = "/island"
+                break;
+            case 32: case 33: case 34: case 35: case 36:
+                queryString = "/beach"
+                break;
+            case 37:
+                queryString = "/space"
+                break;
+            default:
+                queryString = "/village-one"
+                break;
+        }
+      console.log(queryString);
+      window.location.href = queryString
+    })
+
+    document.querySelector('.digital_museum_sign').addEventListener('click', function() {
+      window.location.href = "/museum"
     })
 
     function openWebsite() {

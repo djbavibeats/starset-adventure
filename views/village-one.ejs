@@ -49,6 +49,8 @@
   <body>
     <img class="try-again" src="try_again.png" /> 
     <img class="success" src="success.png" /> 
+    <video class="glitch_one" src="/glitches/glitch_one.mp4" id="glitch_two" muted autoplay loop="true" playsinline webkit-playsinline></video>
+    <video class="glitch_two" src="/glitches/glitch_two.mp4" id="glitch_two" muted autoplay loop="true" playsinline webkit-playsinline></video>
     <img id="hud" src="hud.png" class="hud-overlay" />
     <div class="spotify-modal">
       <iframe src="https://open.spotify.com/embed/playlist/6K1onH2oluQQegbkydUBMw?theme=0" width="100%" height="90%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
@@ -65,13 +67,13 @@
           <a-asset-item id="star-mtl" src="star.mtl"></a-asset-item>
           <video id="video" autoplay loop="true" webkit-playsinline muted src="" type="application/x-mpegURL"  ></video>
         </a-assets>
-        <!-- Background -->
-        <a-camera look-controls-enabled="true" look-controls="touchEnabled: false;"></a-camera>
+        <!-- Background look-controls="touchEnabled: false;" -->
+        <a-camera look-controls-enabled="true" ></a-camera>
         <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position=".7 3.25 -3" rotation="20 0 0"></a-image>
-        <a-plane visible="false" onclick="openWebsite();" position="7.5 9.82 7.5" width="1.5" height="1.75" rotation="0 215 0"></a-plane>
-        <a-obj-model src="#star-obj" mtl="#star-mtl" position="6 10 -10" scale="10 10 10" 
+        <a-plane visible="false" onclick="openWebsite();" position="-18.15 1.576 -.807" width="1.5" height="1.75" rotation="0 90 0"></a-plane>
+        <a-obj-model src="#star-obj" mtl="#star-mtl" position="-20.444 1 -.807" scale="10 10 10" 
         animation="property: rotation; to: 0 360 0; duration: 7000ms; easing: linear; loop: true;" 
-        animation__2="property: position; to: 6 9.6 -10; from: 6 10 -10; loop: true; easing: linear; dir: alternate;"
+        animation__2="property: position; to: -20.444 .6 -.807; from: -20.444 1 -.807; loop: true; easing: linear; dir: alternate;"
         >
         </a-obj-model>
         <a-box onclick="boatShow(false);" class="boatOne" visible="false" height="16" width="4.25" depth=".3" position="7.5 -4 -7.5" rotation="90 7 0"></a-box>

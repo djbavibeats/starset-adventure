@@ -123,3 +123,33 @@
   animation-name: dots-3;
   -webkit-animation-name: dots-3;
 }
+
+.glitch_one {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  display: none;
+  transition: opacity 250ms ease-in-out;
+}
+
+.glitch_two {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  display: none;
+  transition: opacity 250ms ease-in-out;
+}
+
+.long_orator {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  display: none;
+  transition: opacity 1s ease-in-out;
+}

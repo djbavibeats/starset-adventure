@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- <script src="aframe.js"></script> -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="/main.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/main.css">
+
+  </head>
+  <body>
+    <img id="hud" src="hud.png" class="hud-overlay" />
+    <div class="spotify-modal">
+      <iframe src="https://open.spotify.com/embed/playlist/6K1onH2oluQQegbkydUBMw?theme=0" width="100%" height="90%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      <button class="spotify-close-button" onclick="closeModal();">Close</button>
+    </div>
+    <div onclick="openModal();" class="spotify-open-button">OPEN MUSIC</div>
+    <div onclick="exitModal();" class="exit-button">EXIT</div>
+
+    <a-scene class="a-scene" cursor="rayOrigin: mouse; fuseTimeout: 0;" loading-screen="dotsColor: white; backgroundColor: black" vr-mode-ui="enabled: false">
+      <a-assets>  
+          <img id="vacation-mode" src="vacation_mode.png" />
+          <img id="vacation-mode" src="hud.png" />
+          <img id="gallery" src="gallery.png" />
+          <video id="fun_computer" autoplay playsinline loop="true" muted>
+            <source src="volty.mp4" type="video/mp4"></source>
+            </video>
+          <video id="center_wall_video" autoplay playsinline loop="true" src="center_wall_video.mp4" muted></video>
+        </a-assets>
+        <!-- Background -->
+        <a-camera look-controls-enabled="true" rotation="0 -180 0"></a-camera>
+        <a-text text="value: Coming Soon; color: black;" scale="5 5 5" rotation="0 90 0" position="-31.905 3.037 3.443"></a-text>
+        <a-text class="exit-gallery" text="value: Exit; color: black;" scale="25 25 25" rotation="0 0 0" position="52.273 11.992 -139.9"></a-text>
+
+        <a-plane color="white;" position="-35 2.938 0" rotation="0 90 0" scale="10 5 1"></a-plane>
+        <!-- <a-text text="value:- The Auditor; color: black;" scale="5 5 5" position="-7 1 -15"></a-text> -->
+        <!-- <a-video position="3 2 -15" rotation="0 180 0" height="3.25" width="5.76" src="#fun_computer" class="fun_computer" id="fun_computer"></a-video> -->
+        <a-sky src="#gallery"></a-sky>
+
+    </a-scene>
+  </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+    document.getElementById('fun_computer').play();
+
+  })
+    document.querySelector('.exit-gallery').addEventListener('click', function() {
+      window.location.href = "/studio";
+    })
+</script>
+<!-- <script src="vacayMode.js"></script> -->
+
+</html>

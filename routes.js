@@ -3,31 +3,35 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/", function(req, res) {
-  res.render("index");
+  res.render("index")
 });
 
 router.get("/village-one", function(req, res) {
-  res.render("village-one");
+  res.render("village-one")
 })
 
 router.get("/village-two", function(req, res) {
-  res.render("village-two");
+  res.render("village-two")
 })
 
 router.get("/village-three", function(req, res) {
-  res.render("village-three");
+  res.render("village-three")
 })
 
 router.get("/studio", function(req, res) {
   res.render("studio")
 })
 
+router.get("/museum", function(req, res) {
+  res.render("museum")
+})
+
 router.get("/park", function(req, res) {
-  res.render("park");
+  res.render("park")
 })
 
 router.get("/beach", function(req, res) {
-  res.render("beach");
+  res.render("beach")
 })
 
 router.get("/island", function(req, res) {
@@ -35,15 +39,19 @@ router.get("/island", function(req, res) {
 })
 
 router.get("/arctic", function(req, res) {
-  res.render("arctic");
+  res.render("arctic")
+})
+
+router.get("/space", function(req, res) {
+  res.render("space")
 })
 
 router.get("/exit", function(req, res) {
-  res.render("exit");
+  res.render("exit")
 })
 
 router.get("/submission", function(req, res) {
-  res.render("submission");
+  res.render("submission")
 })
 
 module.exports = router;
