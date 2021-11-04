@@ -140,6 +140,7 @@
                 document.querySelector('.field_validation').style.alignItems = "center";
             } else {
                 return new Promise(resolve => {
+                    
                     document.querySelector('.loading').style.display = "block";
                     document.querySelector('.field_validation').style.display = "none";
                     setTimeout(() => {
@@ -147,10 +148,10 @@
                             method: "POST",
                             mode: 'cors',
                             headers: {
-                                "Authorization": `Bearer 3NDeNoD2r0wAAAAAAAAAAYo6xjTEyQ11TIETnOY-JZK4AUFIAMq-3f4O6xsgdSNK`,
+                                "Authorization": `Bearer <%= process.env.DROPBOX_ID%>`,
                                 "Content-Type": "application/octet-stream",
                                 "Dropbox-API-Arg": JSON.stringify({
-                                "path":   `/starset/${name}_${caption}_${file.name}`,
+                                "path":   `/Starset%20Digital%20Gallery/${name}_${caption}_${file.name}`,
                                 "mode": "add",
                                 "autorename": true,
                                 "mute": false,
