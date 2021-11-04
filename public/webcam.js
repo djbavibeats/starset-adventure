@@ -46,13 +46,6 @@ video.addEventListener('playing', () => {
 })
 document.getElementById('lock-emotion').addEventListener("click", function() {
     video.pause()
-    var ctx = canvas.getContext('2d');
-    ctx.drawImage(video, 0,0, 450, 200);
-    let dataUrl = document.querySelector('canvas').toDataURL();
-    var link = document.createElement('a');
-    link.download = 'filename.png';
-    link.href = dataUrl;
-    link.click();
     document.getElementById('reset-emotion').style.display = 'block';
     document.getElementById('lock-emotion').style.display = 'none';
 })
@@ -64,11 +57,16 @@ document.getElementById('reset-emotion').addEventListener("click", function() {
     document.getElementById('lock-emotion').style.display = 'block';
 })
 
-document.getElementById('share-socials').addEventListener("click", function() {
-    document.getElementById('share-socials').innerHTML = '2. Share experience to socials. <i class="fal fa-check-square exit-checkbox"></i>'
-    let url = `https://twitter.com/intent/tweet?text=The%20BMI%20Beta%20makes%20me%20` + expression + `!`
-    // url = `https://www.facebook.com/share.php?u=google.com&quote=The%20BMI%20Beta%20makes%20me%20` + expression + `!`
-    // window.open(url, '_blank').focus();
+document.getElementById('share-socials-twitter').addEventListener("click", function() {
+    document.getElementById('share-social-button').innerHTML = '2. Share experience to socials. <i class="fal fa-check-square exit-checkbox"></i>'
+    let url = `https://twitter.com/intent/tweet?text=I%20have%20been%20selected%20by%20STARSET%20to%20beta%20test%20the%20BMI%20at%20experience.starsetonline.com.%20It%20made%20me%20feel%20` + expression + `!`
+    window.open(url, '_blank').focus();
+})
+
+document.getElementById('share-socials-facebook').addEventListener("click", function() {
+    document.getElementById('share-social-button').innerHTML = '2. Share experience to socials. <i class="fal fa-check-square exit-checkbox"></i>'
+    let url = `https://www.facebook.com/share.php?u=experience.starsetonline.com&quote=I%20have%20been%20selected%20by%20STARSET%20to%20beta%20test%20the%20BMI%20at%20experience.starsetonline.com.%20It%20made%20me%20feel%20` + expression + `!`
+    window.open(url, '_blank').focus();
 })
 
 document.getElementById('submission-link').addEventListener("click", function() {

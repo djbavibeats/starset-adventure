@@ -95,14 +95,12 @@
 
     function boatShow(boat) {
         if (!boat) {
-          console.log("incorrect")
           new Audio('error.mp3').play();
           document.querySelector('.try-again').style.display = 'block'; 
           setTimeout(() => {
             document.querySelector('.try-again').style.display = 'none'; 
           }, 1000)
         } else {
-          console.log("correct")
           success.play();
           document.querySelector('.success').style.display = 'block'; 
           setTimeout(() => {

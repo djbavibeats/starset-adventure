@@ -18,7 +18,6 @@ function glitch() {
     var min = 7,
     max = 15;
     var rand = Math.floor(Math.random() * (max - min + 1) + min); //Generate Random number between 5 - 10
-    console.log(rand % 2);
     if (rand % 2 === 0) {
       glitch_one.style.display = 'block';
       glitch_one.style.opacity = .2;

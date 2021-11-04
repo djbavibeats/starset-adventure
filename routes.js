@@ -2,8 +2,6 @@ var express = require("express");
 
 var router = express.Router();
 
-console.log(process.env.SS_USER, process.env.SS_PASSWORD);
-
 router.get("/", function(req, res) {
   const reject = () => {
     res.setHeader('www-authenticate', 'Basic')

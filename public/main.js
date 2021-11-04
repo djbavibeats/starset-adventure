@@ -20,18 +20,12 @@ AFRAME.registerComponent('ios-video-fix', {
     window.location.href = "/exit"
   }
 
-  function uploadImage() {
-    console.log("uploading");
-  }
-
-
   // Check to see if device is accessing site on mobile
 $(window).resize(function() {
   if (window.location.pathname !== "/") {
     if( /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         if (window.matchMedia("(orientation: portrait)").matches) {
             // you're in PORTRAIT mode
-            console.log("Portrait!")
         }
   
         if (window.matchMedia("(orientation: landscape)").matches) {

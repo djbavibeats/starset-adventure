@@ -11,7 +11,6 @@
   <script>
     window.onload = function () {
         let r = Math.floor(Math.random() * (0 - 38) + 38);
-        console.log(r);
         let queryString = "";
         switch(r) {
             case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:
@@ -36,7 +35,6 @@
                 queryString = "/village-one"
                 break;
         }
-        console.log(queryString);
         document.querySelector(".activate-button").addEventListener("click", function () {
           window.location.href = queryString
         });
