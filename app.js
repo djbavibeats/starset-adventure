@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var path = require("path");
 var axios = require('axios');
 var fs = require('fs');
+require('dotenv').config()
 
 var routes = require("./routes");
 

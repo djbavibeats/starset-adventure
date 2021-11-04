@@ -2,56 +2,279 @@ var express = require("express");
 
 var router = express.Router();
 
+console.log(process.env.SS_USER, process.env.SS_PASSWORD);
+
 router.get("/", function(req, res) {
-  res.render("index")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    return res.render("index")
+  }
 });
 
 router.get("/village-one", function(req, res) {
-  res.render("village-one")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("village-one")
+  }
 })
 
 router.get("/village-two", function(req, res) {
-  res.render("village-two")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("village-two")
+  }
 })
 
 router.get("/village-three", function(req, res) {
-  res.render("village-three")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("village-three")
+  }
 })
 
 router.get("/studio", function(req, res) {
-  res.render("studio")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("studio")
+  }
 })
 
 router.get("/museum", function(req, res) {
-  res.render("museum")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("museum")
+  }
 })
 
 router.get("/park", function(req, res) {
-  res.render("park")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("park")
+  }
 })
 
 router.get("/beach", function(req, res) {
-  res.render("beach")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("beach")
+  }
 })
 
 router.get("/island", function(req, res) {
-  res.render("island")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("island")
+  }
 })
 
 router.get("/arctic", function(req, res) {
-  res.render("arctic")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("arctic")
+  }
 })
 
 router.get("/space", function(req, res) {
-  res.render("space")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("space")
+  }
 })
 
 router.get("/exit", function(req, res) {
-  res.render("exit")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("exit")
+  }
 })
 
 router.get("/submission", function(req, res) {
-  res.render("submission")
+  const reject = () => {
+    res.setHeader('www-authenticate', 'Basic')
+    res.sendStatus(401)
+  }
+
+  const authorization = req.headers.authorization
+
+  if(!authorization) {
+    return reject()
+  }
+
+  const [username, password] = Buffer.from(authorization.replace('Basic ', ''), 'base64').toString().split(':')
+
+  if(! (username === process.env.SS_USER && password === process.env.SS_PASSWORD)) {
+    return reject()
+  } else {
+    res.render("submission")
+  }
 })
 
 module.exports = router;
