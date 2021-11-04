@@ -66,7 +66,18 @@
     })
 
     document.querySelector('.starset_logo').addEventListener('click', function () {
-      window.open("https://starsetonline.com", '_blank').focus();
+      // window.open("https://starsetonline.com", '_blank').focus();
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      if (/windows phone/i.test(userAgent)) {
+        window.open("https://play.google.com/store/apps/details?id=com.starset.companion&hl=en_US&gl=US", '_blank').focus();
+      } else if (/android/i.test(userAgent)) {
+        window.open("https://play.google.com/store/apps/details?id=com.starset.companion&hl=en_US&gl=US", '_blank').focus();
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        window.open("https://apps.apple.com/us/app/starset/id1324067732", '_blank').focus();
+      } else {
+        window.open("https://apps.apple.com/us/app/starset/id1324067732", '_blank').focus();
+      }
     })
 
     document.querySelector('.back_to_vacation_sign').addEventListener('click', function() {
