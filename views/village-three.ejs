@@ -48,7 +48,7 @@
         </a-assets>
         <!-- Background -->
         <a-camera look-controls-enabled="true" look-controls="touchEnabled: false;"></a-camera>
-        <a-plane class="success" visible="false" onclick="revealEgg();" position="-0.655 2 -19.486" rotation="0 -44.18 0" height="4.39" width="3.1"></a-plane>
+        <a-plane class="you_did_it" visible="false" position="-0.655 2 -19.486" rotation="0 -44.18 0" height="4.39" width="3.1"></a-plane>
         <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position="-2.65 3.5 -3" rotation="17 20 0"></a-image>
         <a-videosphere ios-video-fix id="videoSphere" src="#video"  muted></a-videosphere>
     </a-scene>
@@ -56,7 +56,7 @@
 
 <script>
     const success = new Audio ('success.wav');
-    
+
     let orator = document.querySelector('.long_orator')
     const static = new Audio('static.mp3')
 
@@ -65,7 +65,7 @@
         this.play();
     }, false);
 
-    document.querySelector('.success').addEventListener('click', function() {
+    document.querySelector('.you_did_it').addEventListener('click', function() {
       orator.style.display = 'block';
       orator.style.opacity = 1;
       static.play();
