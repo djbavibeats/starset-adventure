@@ -211,6 +211,7 @@ top: 1%;
 .logo-wrapper {
   height: 15vh;
 }
+
 .logo {
   margin: 0 auto;
   padding-top: 5vh;
@@ -301,4 +302,44 @@ input[type="file"] {
   text-align: center;
   width: 65%;
   display: none;
+}
+
+.optimize-modal {
+  position: absolute;
+  z-index: 11;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+  -webkit-transition: opacity 1000ms linear;
+  transition: opacity 1000ms linear;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: rgba(0,0,0,.95);
+  border: 1px solid #1226AA; 
+  color: white;
+  border-radius: 25px;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.logo-wrapper {
+  height: 15vh;
+}
+
+@media only screen and (min-width: 769px) {
+  .logo {
+    width: 65%;
+  }
+
+  .logo-wrapper {
+    height: 35vh;
+  }
 }

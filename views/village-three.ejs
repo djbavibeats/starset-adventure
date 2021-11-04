@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html id="content">
   <head>
+    <% include _meta %>
       <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- <script src="aframe.js"></script> -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
@@ -47,7 +48,7 @@
           <video id="video" autoplay loop="true" webkit-playsinline muted src="" type="application/x-mpegURL"  ></video>
         </a-assets>
         <!-- Background -->
-        <a-camera look-controls-enabled="true" look-controls="touchEnabled: false;"></a-camera>
+        <a-camera look-controls-enabled="true" look-controls="touchEnabled: true;"></a-camera>
         <a-plane class="you_did_it" visible="false" position="-0.655 2 -19.486" rotation="0 -44.18 0" height="4.39" width="3.1"></a-plane>
         <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position="-2.65 3.5 -3" rotation="17 20 0"></a-image>
         <a-videosphere ios-video-fix id="videoSphere" src="#video"  muted></a-videosphere>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html id="content">
   <head>
+    <% include _meta %>
       <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- <script src="aframe.js"></script> -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
@@ -31,7 +32,7 @@
           <video id="center_wall_video" autoplay playsinline loop="true" src="center_wall_video.mp4" muted></video>
         </a-assets>
         <!-- Background -->
-        <a-camera look-controls-enabled="true" rotation="0 -180 0"></a-camera>
+        <a-camera look-controls-enabled="true" look-controls="touchEnabled: true;" rotation="0 -180 0"></a-camera>
         <a-text class="exit-gallery" text="value: Exit; color: black;" scale="25 25 25" rotation="0 0 0" position="52.273 11.992 -139.9"></a-text>
         <a-image id="curation_panel" class="curation_panel" opacity=".5" src="#curation_panel"  position=".5 2 -3" rotation="0 0 0"
         animation="property: position; to: .5 2 -3; from: .5 2.015 -3; loop: true;  dir: alternate; dur: 500;"

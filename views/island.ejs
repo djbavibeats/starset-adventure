@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html id="content">
   <head>
+    <% include _meta %>
+
       <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- <script src="aframe.js"></script> -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
@@ -33,7 +35,7 @@
           <video id="video" autoplay loop="true" webkit-playsinline muted src="https://videodelivery.net/e13ba8c79906e489f192224455afa117/manifest/video.m3u8" type="application/x-mpegURL"  ></video>
         </a-assets>
         <!-- Background -->
-        <a-camera look-controls-enabled="true" look-controls="touchEnabled: false;"></a-camera>
+        <a-camera look-controls-enabled="true" look-controls="touchEnabled: true;"></a-camera>
         <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position=".7 3.25 -3" rotation="20 0 0"></a-image>
         <a-videosphere rotation="0 180 0" ios-video-fix id="videoSphere" src="#video"  muted></a-videosphere>
         <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position=".7 3.25 -3" rotation="20 0 0"></a-image>

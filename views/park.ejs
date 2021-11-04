@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html id="content">
   <head>
+    <% include _meta %>
       <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- <script src="aframe.js"></script> -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
@@ -31,7 +32,7 @@
           <img id="park" src="park.png" />
         </a-assets>
         <!-- Background -->
-        <a-camera look-controls-enabled="true" look-controls="touchEnabled: false"></a-camera>
+        <a-camera look-controls-enabled="true" look-controls="touchEnabled: true"></a-camera>
         <a-plane visible="false" onclick="openWebsite();" position="-10 3.45 -3" width="1.5" height="1.75" rotation="0 75 0"></a-plane>
         <a-obj-model src="#star-obj" mtl="#star-mtl" position="-10 3 -3" scale="10 10 10" 
           animation="property: rotation; to: 0 360 0; duration: 7000ms; easing: linear; loop: true;" 

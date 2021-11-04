@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html id="content">
+  <% include _meta %>
+
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
@@ -55,6 +57,11 @@
     }
   </style>
   <body style="margin : 0px; overflow: hidden;">
+    <div class="optimize-modal"><div class='modal-content'>
+      <p>Welcome to the BMI Beta Test.</p>
+      <p>For optimal experience, open on a mobile device.</p>
+      <button id="optimize-modal-close">Close</button>
+  </div></div>
     <!-- <div class="modal"> -->
         <!-- <div class="modal-content"> -->
             <!-- <p>Welcome to the BMI Beta test. Please press the button below to initialize your experience.</p> -->
