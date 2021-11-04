@@ -5,6 +5,8 @@
     <!-- <script src="aframe.js"></script> -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
     <script src="/main.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
@@ -26,19 +28,14 @@
           <img id="vacation-mode" src="hud.png" />
           <img id="gallery" src="gallery.png" />
           <img id="curation_panel" src="curation_panel.png" />
-          <video id="fun_computer" autoplay playsinline loop="true" muted>
-            <source src="volty.mp4" type="video/mp4"></source>
-            </video>
           <video id="center_wall_video" autoplay playsinline loop="true" src="center_wall_video.mp4" muted></video>
         </a-assets>
         <!-- Background -->
         <a-camera look-controls-enabled="true" rotation="0 -180 0"></a-camera>
-        <a-text text="value: Coming Soon; color: black;" scale="5 5 5" rotation="0 90 0" position="-31.905 3.037 3.443"></a-text>
         <a-text class="exit-gallery" text="value: Exit; color: black;" scale="25 25 25" rotation="0 0 0" position="52.273 11.992 -139.9"></a-text>
         <a-image id="curation_panel" class="curation_panel" opacity=".5" src="#curation_panel"  position=".5 2 -3" rotation="0 0 0"
         animation="property: position; to: .5 2 -3; from: .5 2.015 -3; loop: true;  dir: alternate; dur: 500;"
         ></a-image>
-        <a-plane color="white;" position="-35 2.938 0" rotation="0 90 0" scale="10 5 1"></a-plane>
         <!-- <a-text text="value:- The Auditor; color: black;" scale="5 5 5" position="-7 1 -15"></a-text> -->
         <!-- <a-video position="3 2 -15" rotation="0 180 0" height="3.25" width="5.76" src="#fun_computer" class="fun_computer" id="fun_computer"></a-video> -->
         <a-sky src="#gallery"></a-sky>

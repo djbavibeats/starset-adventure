@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
+    <meta content="width=device-width, initial-scale=1 user-scalable=0" name="viewport" />
+
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/28fbef8869.js" crossorigin="anonymous"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
   <link rel="stylesheet" href="/main.css">
   <style>
-      body {
+    body {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -17,10 +21,10 @@
         align-items: center;
         background: black;
         color: white;
-        font-size: 18px;
+        font-size: 12px;
     }
 
-    .logo {
+    /* .logo {
         margin: 0 auto;
         margin-top: 100px;
         margin-bottom: 100px;
@@ -35,14 +39,14 @@
     }
 
     input {
-        margin-bottom: 25px;
+        margin-top: 25px;
         background: none;
         border: 1px solid blue;
         border-radius: 7px;
         padding: 15px;
         font-family: 'Source Code Pro';
         color: white;
-        font-size: 30px;
+        font-size: 12px;
     }
 
     button {
@@ -54,28 +58,129 @@
         font-family: 'Source Code Pro';
         color: white;
         font-size: 30px;
-    }
+    } */
 
     input[type="file"] {
         border: none;
         margin: 0 auto;
-        margin-bottom: 25px;
     }
 
     #file-upload-button {
         margin-right: 25px;
     }
+
+    .form_container {
+        display: flex;
+        flex-direction: column;
+        padding: 0% 15%;
+    }
+
+    .loading {
+        font-size: 90px;
+        text-align: center;
+        display: none;
+    }
+
+    .loading:after {
+        overflow: hidden;
+        display: inline-block;
+        vertical-align: bottom;
+        -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+        animation: ellipsis steps(4,end) 900ms infinite;
+        content: "\2026"; /* ascii code for the ellipsis character */
+        width: 0px;
+    }
+
+    @keyframes ellipsis {
+        to {
+            width: 75px;    
+        }
+    }
+
+        @-webkit-keyframes ellipsis {
+        to {
+            width: 70px;    
+        }
+    }
   </style>
 
  <body style="margin : 0px; padding: 0px;">
     <img class="logo" src="logo.png">
-    <form>
-        <input placeholder="Your Name" />
-        <input placeholder="Caption" />
-        <input type="file"></input>
-        <button>SUBMIT</button>
-    </form>
+    <div class="form_container">
+        <input id="name" placeholder="Your Name" />
+        <input id='caption' placeholder="Caption" />
+        <input id="file" type="file" name="file"></input>
+        <button onclick="postForm();">Submit</button>
+    </div>
+    <div class="loading" id="loading"></div>
+    <div class="success_message">
+        <p>Thank you for your submission for the Starset Gallery.</p>
+        <button onclick="goBack();">Reinitialize Experience</button>
+    </div>
+    <div class="error_message">
+        <p>We're sorry, something went wrong. Please try again later.</p>
+    </div>
+    <div class="field_validation">
+        <p>All fields are required for your piece to be considered!</p>
+    </div>
 </body>
     <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        function postForm() {
+            let file = document.getElementById('file').files[0];
+            let name = document.getElementById('name').value;
+            let caption = document.getElementById('caption').value;
 
+            var data = new FormData()
+            data.append('file', document.getElementById('file').files[0]);
+            if (!name || !file || !caption) {
+                document.querySelector('.field_validation').style.display = "flex";
+                document.querySelector('.field_validation').style.alignItems = "center";
+            } else {
+                return new Promise(resolve => {
+                    document.querySelector('.loading').style.display = "block";
+                    document.querySelector('.field_validation').style.display = "none";
+                    setTimeout(() => {
+                        fetch("https://content.dropboxapi.com/2/files/upload", {
+                            method: "POST",
+                            mode: 'cors',
+                            headers: {
+                                "Authorization": `Bearer 3NDeNoD2r0wAAAAAAAAAAYo6xjTEyQ11TIETnOY-JZK4AUFIAMq-3f4O6xsgdSNK`,
+                                "Content-Type": "application/octet-stream",
+                                "Dropbox-API-Arg": JSON.stringify({
+                                "path":   `/starset/${name}_${caption}_${file.name}`,
+                                "mode": "add",
+                                "autorename": true,
+                                "mute": false,
+                                "strict_conflict": false
+                                })
+                            },
+                            body: document.getElementById('file').files[0]
+                        }).then(resp => {
+                            if (resp.status == 200) {
+                                document.querySelector('.loading').style.display = "none";
+                                document.querySelector('.form_container').style.display = "none";
+                                document.querySelector('.success_message').style.display = "flex";
+                                document.querySelector('.success_message').style.justifyContent = "center";
+                                document.querySelector('.success_message').style.height = "65vh";
+                                document.querySelector('.success_button').style.display = "flex";
+                            } else {
+                                document.querySelector('.loading').style.display = "none";
+                                document.querySelector('.form_container').style.display = "none";
+                                document.querySelector('.error_message').style.display = "flex";
+                                document.querySelector('.error_message').style.alignItems = "center";
+                                document.querySelector('.error_message').style.height = "65vh";
+                            }
+                        })
+                        resolve()
+                    }, 2000)
+                })
+            }
+        }
+
+        function goBack() {
+            window.location.href = "/";
+        }
+    </script>
 </html>

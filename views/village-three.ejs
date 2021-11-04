@@ -5,6 +5,8 @@
     <!-- <script src="aframe.js"></script> -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/main.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
@@ -25,6 +27,8 @@
     </style>
   </head>
   <body>
+    <video class="long_orator" src="/glitches/long_orator.mp4" id="glitch_two" muted autoplay loop="true" playsinline webkit-playsinline></video>
+
     <img class="success" src="success.png" /> 
     <video class="glitch_one" src="/glitches/glitch_one.mp4" id="glitch_two" muted autoplay loop="true" playsinline webkit-playsinline></video>
     <video class="glitch_two" src="/glitches/glitch_two.mp4" id="glitch_two" muted autoplay loop="true" playsinline webkit-playsinline></video>
@@ -44,7 +48,7 @@
         </a-assets>
         <!-- Background -->
         <a-camera look-controls-enabled="true" look-controls="touchEnabled: false;"></a-camera>
-        <a-plane visible="false" onclick="revealEgg();" position="-0.655 2 -19.486" rotation="0 -44.18 0" height="4.39" width="3.1"></a-plane>
+        <a-plane class="success" visible="false" onclick="revealEgg();" position="-0.655 2 -19.486" rotation="0 -44.18 0" height="4.39" width="3.1"></a-plane>
         <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position="-2.65 3.5 -3" rotation="17 20 0"></a-image>
         <a-videosphere ios-video-fix id="videoSphere" src="#video"  muted></a-videosphere>
     </a-scene>
@@ -52,16 +56,25 @@
 
 <script>
     const success = new Audio ('success.wav');
+    
+    let orator = document.querySelector('.long_orator')
+    const static = new Audio('static.mp3')
 
-    function revealEgg() {
-        // success.play();
-        window.open("https://www.youtube.com/channel/UCk20cSRhH_ms_Yk1AZItFqA", target="_blank")
-          // document.querySelector('.success').style.display = 'block'; 
-          // setTimeout(() => {
-          //   document.querySelector('.success').style.display = 'none'; 
-          // }, 15000)
-    }
+    static.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    }, false);
 
+    document.querySelector('.success').addEventListener('click', function() {
+      orator.style.display = 'block';
+      orator.style.opacity = 1;
+      static.play();
+      setInterval(function() {
+          window.location.href = "/"
+      }, 5000)
+    })
+    
+  
     function openModal() {
       document.querySelector('.spotify-modal').style.display = 'block';
     }
