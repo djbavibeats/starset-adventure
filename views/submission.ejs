@@ -132,7 +132,6 @@
             let file = document.getElementById('file').files[0];
             let name = document.getElementById('name').value;
             let caption = document.getElementById('caption').value;
-
             var data = new FormData()
             data.append('file', document.getElementById('file').files[0]);
             if (!name || !file || !caption) {
