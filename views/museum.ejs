@@ -9,6 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
     <script src="/main.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/main.css">
@@ -27,25 +29,285 @@
       <a-assets>  
           <img id="vacation-mode" src="vacation_mode.png" />
           <img id="vacation-mode" src="hud.png" />
-          <img id="gallery" src="gallery.png" />
+          <img id="gallery" src="gallery_lights.png" />
           <img id="curation_panel" src="curation_panel.png" />
+          <!-- CURATED IMAGES -->
+          <!-- LEFT WALL -->
+          <img id="mosaic" src="/ugc/L/mosaic.png" />
+          <img id="embed" src="/ugc/L/embed.jpeg" />
+          <img id="meetings_one" src="/ugc/L/meetings_one.jpeg" />
+          <img id="creature" src="/ugc/L/creature.jpeg" />
+          <img id="homosapiens" src="/ugc/L/homosapiens.jpg" />
+          <img id="alive" src="/ugc/L/alive.jpeg" />
+          <img id="raven" src="/ugc/L/raven.jpeg" />
+          <img id="demonstrations_one" src="/ugc/L/demonstrations_one.jpeg" />
+          <!-- END LEFT WALL -->
+          <!-- RIGHT WALL -->
+          <img id="bluejay" src="/ugc/R/bluejay.jpg" />
+          <img id="stars" src="/ugc/R/stars.jpeg" />
+          <img id="happy_nation" src="/ugc/R/happy_nation.png" />
+          <img id="meetings_two" src="/ugc/R/meetings_two.jpeg" />
+          <img id="colors" src="/ugc/R/colors.jpeg" />
+          <img id="demonstrations_two" src="/ugc/R/demonstrations_two.jpeg" />
+          <img id="ISKF" src="/ugc/R/ISKF.jpeg" />
+          <img id="DESTROY" src="/ugc/R/DESTROY.jpeg" />
+          <!-- END RIGHT WALL -->
+          <!-- LUKES WALL -->
+          <img id="THE_BREACH" src="/ugc/WALL/THE_BREACH.png" />
+          <img id="OTHERWORLDLY" src="/ugc/WALL/OTHERWORLDLY.png" />
+          <img id="ICARUS" src="/ugc/WALL/ICARUS.png" />
+          <img id="EARTHRISE" src="/ugc/WALL/EARTHRISE.png" />
+          <img id="LEAVING_THIS_WORLD_BEHIND" src="/ugc/WALL/LEAVING_THIS_WORLD_BEHIND.png" />
+          <img id="DEVOLUTION" src="/ugc/WALL/DEVOLUTION.png" />
+          <img id="ANNIHILATED_LOVE" src="/ugc/WALL/ANNIHILATED_LOVE.png" />
+          <img id="ALCHEMY" src="/ugc/WALL/ALCHEMY.png" />
+          <img id="DISAPPEAR" src="/ugc/WALL/DISAPPEAR.png" />
+          <img id="THIS_ENDLESS_ENDEAVOR" src="/ugc/WALL/THIS_ENDLESS_ENDEAVOR.png" />
+          <img id="SYMBIOTIC" src="/ugc/WALL/SYMBIOTIC.png" />
+          <img id="DREAMCATCHER" src="/ugc/WALL/DREAMCATCHER.png" />
+          <img id="TUNNELVISION" src="/ugc/WALL/TUNNELVISION.png" />
+          <img id="INFECTED" src="/ugc/WALL/INFECTED.png" />
+          <img id="SOMETHING_WICKED" src="/ugc/WALL/SOMETHING_WICKED.png" />
+          <img id="WHERE_THE_SKIES_END" src="/ugc/WALL/WHERE_THE_SKIES_END.png" />
+          <!-- END LUKES WALL -->
+          <!-- END CURATED IMAGES -->
+          <img id="museum_sign" src="museum_sign.png" />
           <video id="center_wall_video" autoplay playsinline loop="true" src="center_wall_video.mp4" muted></video>
+          <a-asset-item id="toolkit-obj" src="toolkit.obj"></a-asset-item>
+          <a-asset-item id="toolkit-mtl" src="toolkit.mtl"></a-asset-item>
         </a-assets>
+        <!-- Background -->
         <a-camera look-controls-enabled="true" look-controls="touchEnabled: true;" rotation="0 -180 0"></a-camera>
         <a-text class="exit-gallery" text="value: Exit; color: black;" scale="25 25 25" rotation="0 0 0" position="52.273 11.992 -139.9"></a-text>
-        <a-image id="curation_panel" class="curation_panel" opacity=".5" src="#curation_panel"  position=".5 2 -3" rotation="0 0 0"
+        <a-image id="museum_sign" class="museum_sign" src="#museum_sign"  position="-11.242 6.572 -85" rotation="0 0 0" scale="35.032 9 1"></a-image>
+        <a-obj-model id="toolkit" src="#toolkit-obj" mtl="#toolkit-mtl" position="0 -9.5 -30" scale=".4 .4 .4"
+          animation="property: rotation; to: 0 360 0; dur: 15000ms; easing: linear; loop: true;" 
+          animation__2="property: position; to: .5 -12.9 -30; from: .5 -12.5 -30; loop: true; easing: linear; dir: alternate;"
+        ></a-obj-model>
+        <!-- <a-image id="curation_panel" class="curation_panel" opacity=".5" src="#curation_panel"  position=".5 2 -3" rotation="0 0 0"
         animation="property: position; to: .5 2 -3; from: .5 2.015 -3; loop: true;  dir: alternate; dur: 500;"
+        ></a-image> -->
+        <!-- BEGIN CURATION -->
+        <!-- .75 -->
+        <a-image id="mosaic" class="mosaic" src="#mosaic"  position="-25 7 35.7" rotation="0 90 0" scale="8.25 11 1"
+          onclick="render('L/mosaic', '.jpeg', 'Dominick', 'Chaos Theory');"
         ></a-image>
-        <!-- REDACTED -->
+        <!-- .5625 -->
+        <a-image id="embed" class="embed" src="#embed"  position="-25 7 27" rotation="0 90 0" scale="6.1875 11 1"
+          onclick="render('L/embed', '.jpeg', 'Ash', 'Sage');"
+        ></a-image>
+        <!-- 1 -->
+        <a-image id="meetings_one" class="meetings_one" src="#meetings_one"  position="-25 7 17" rotation="0 90 0" scale="11 11 1"
+          onclick="render('L/meetings_one', '.jpeg', 'Alex', 'Post Show Signing');"
+        ></a-image>
+        <!-- .7 -->
+        <a-image id="creature" class="creature" src="#creature"  position="-25 7 6.5" rotation="0 90 0" scale="7.7 11 1"
+          onclick="render('L/creature', '.jpeg', 'Mike', 'Korskov');"
+        ></a-image>
+        <!-- .75 -->
+        <a-image id="homosapiens" class="homosapiens" src="#homosapiens"  position="-25 7 -2.6" rotation="0 90 0" scale="8.25 11 1"
+          onclick="render('L/homosapiens', '.jpg', 'Mercy', 'Homoesapiens are not the only living beings who seek escapism.');"
+        ></a-image>
+        <!-- 1.333 -->
+        <a-image id="alive" class="alive" src="#alive"  position="-25 7 -15.35" rotation="0 90 0" scale="14.667 11 1"
+          onclick="render('L/alive', '.jpeg', 'Ari', 'I come alive when you are with me.');"
+        ></a-image>
+        <!-- .838625 -->
+        <a-image id="raven" class="raven" src="#raven"  position="-25 7 -29" rotation="0 90 0" scale="9.225 11 1"
+          onclick="render('L/raven', '.jpeg', 'RAVENSTORME', 'Painting of Dustin.');"
+        ></a-image>
+        <!-- 1.333  -->
+        <a-image id="demonstrations_one" class="demonstrations_one" src="#demonstrations_one"  position="-25 7 -42.5" rotation="0 90 0" scale="14.667 11 1"
+          onclick="render('L/demonstrations_one', '.jpeg', 'Kristy', 'Atlanta Demonstration');"
+        ></a-image>
+
+
+        <!-- 1 -->
+        <a-image id="bluejay" class="bluejay" src="#bluejay"  position="29 5 -47" rotation="0 -90 0" scale="11 11 1"
+          onclick="render('R/bluejay', '.jpg', 'Bluejayyx', 'Best Tour-ists');"
+        ></a-image>
+        <!-- .75 -->
+        <a-image id="stars" class="stars" src="#stars"  position="29 5 -35.59" rotation="0 -90 0" scale="8.25 11 1"
+          onclick="render('R/stars', '.jpeg', 'Casey', 'WE TURN OUR HEARTS TO THE STARS');"
+        ></a-image>
+        <!-- 1 -->
+        <a-image id="happy_nation" class="happy_nation" src="#happy_nation"  position="29 5 -24.341" rotation="0 -90 0" scale="11 11 1"
+          onclick="render('R/happy_nation', '.png', 'Daniel', 'A Happy Nation');"
+        ></a-image>
+        <!-- 1.7258 -->
+        <a-image id="meetings_two" class="meetings_two" src="#meetings_two"  position="29 5 -7.978" rotation="0 -90 0" scale="18.98 11 1"
+          onclick="render('R/meetings_two', '.jpeg', 'Nyah', 'Me and The Homies');"
+        ></a-image>
+        <!-- .75 -->
+        <a-image id="colors" class="colors" src="#colors"  position="29 5 6.792" rotation="0 -90 0" scale="8.25 11 1"
+          onclick="render('R/colors', '.jpeg', 'Cecilia', 'Watercolor Divisions Emblem');"
+        ></a-image>
+        <!-- .75 -->
+        <a-image id="demonstrations_two" class="demonstrations_two" src="#demonstrations_two"  position="29 5 16.715" rotation="0 -90 0" scale="8.25 11 1"
+          onclick="render('R/demonstrations_two', '.jpeg', 'Danial', 'Spreading the word.');"
+        ></a-image>
+        <!-- 1 -->
+        <a-image id="ISKF" class="ISKF" src="#ISKF"  position="29 5 27.719" rotation="0 -90 0" scale="11 11 1"
+          onclick="render('R/ISKF', '.jpeg', 'Mariarita', 'I:S::K:F');"
+        ></a-image>
+        <!-- 1.7258 - FLAGGED -->
+        <a-image id="DESTROY" class="DESTROY" src="#DESTROY"  position="29 5 44.442" rotation="0 -90 0" scale="18.98 11 1"
+          onclick="render('R/DESTROY', '.jpeg', 'Zack', 'Destroy the architect');"
+        ></a-image>
+        <!-- END CURATION -->
+        <!-- .667 -->
+        <a-image id="THE_BREACH" class="THE_BREACH" src="#THE_BREACH"  position="18 7 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/THE_BREACH', '.png', 'Luke', 'THE_BREACH');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="OTHERWORLDLY" class="OTHERWORLDLY" src="#OTHERWORLDLY"  position="13 7 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/OTHERWORLDLY', '.png', 'Luke', 'OTHERWORLDLY');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="ICARUS" class="ICARUS" src="#ICARUS"  position="8 7 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/ICARUS', '.png', 'Luke', 'ICARUS');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="EARTHRISE" class="EARTHRISE" src="#EARTHRISE"  position="3 7 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/EARTHRISE', '.png', 'Luke', 'EARTHRISE');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="LEAVING_THIS_WORLD_BEHIND" class="LEAVING_THIS_WORLD_BEHIND" src="#LEAVING_THIS_WORLD_BEHIND"  position="-2 7 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/LEAVING_THIS_WORLD_BEHIND', '.png', 'Luke', 'LEAVING_THIS_WORLD_BEHIND');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="DEVOLUTION" class="DEVOLUTION" src="#DEVOLUTION"  position="-7 7 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/DEVOLUTION', '.png', 'Luke', 'DEVOLUTION');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="ANNIHILATED_LOVE" class="ANNIHILATED_LOVE" src="#ANNIHILATED_LOVE"  position="-12 7 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/ANNIHILATED_LOVE', '.png', 'Luke', 'ANNIHILATED_LOVE');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="ALCHEMY" class="ALCHEMY" src="#ALCHEMY"  position="-17 7 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/ALCHEMY', '.png', 'Luke', 'ALCHEMY');"
+        ></a-image>
+
+        <!-- .667 -->
+        <a-image id="DISAPPEAR" class="DISAPPEAR" src="#DISAPPEAR"  position="18 0 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/DISAPPEAR', '.png', 'Luke', 'DISAPPEAR');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="THIS_ENDLESS_ENDEAVOR" class="THIS_ENDLESS_ENDEAVOR" src="#THIS_ENDLESS_ENDEAVOR"  position="13 0 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/THIS_ENDLESS_ENDEAVOR', '.png', 'Luke', 'THIS_ENDLESS_ENDEAVOR');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="SYMBIOTIC" class="SYMBIOTIC" src="#SYMBIOTIC"  position="8 0 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/SYMBIOTIC', '.png', 'Luke', 'SYMBIOTIC');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="DREAMCATCHER" class="DREAMCATCHER" src="#DREAMCATCHER"  position="3 0 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/DREAMCATCHER', '.png', 'Luke', 'DREAMCATCHER');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="TUNNELVISION" class="TUNNELVISION" src="#TUNNELVISION"  position="-2 0 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/TUNNELVISION', '.png', 'Luke', 'TUNNELVISION');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="INFECTED" class="INFECTED" src="#INFECTED"  position="-7 0 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/INFECTED', '.png', 'Luke', 'INFECTED');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="SOMETHING_WICKED" class="SOMETHING_WICKED" src="#SOMETHING_WICKED"  position="-12 0 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/SOMETHING_WICKED', '.png', 'Luke', 'SOMETHING_WICKED');"
+        ></a-image>
+        <!-- .667 -->
+        <a-image id="WHERE_THE_SKIES_END" class="WHERE_THE_SKIES_END" src="#WHERE_THE_SKIES_END"  position="-17 0 40" rotation="0 180 0" scale="4.002 6 1"
+          onclick="render('WALL/WHERE_THE_SKIES_END', '.png', 'Luke', 'WHERE_THE_SKIES_END');"
+        ></a-image>
         <a-sky src="#gallery"></a-sky>
 
     </a-scene>
+    <div id="display-wrapper"><div id="display">
+      <div id="close-display">X</div>
+      <div class="specimen-wrapper">
+        <img id="specimen" />
+      </div>
+      <div class="identification-wrapper">
+        <div id="identification"></div>
+      </div>
+    </div></div>
   </body>
+<style>
+  #close-display {
+    position: relative;
+    right: -140px;
+    top: -25px;
+  }
 
+  #display-wrapper {
+    display: none;
+    position: absolute;
+    align-items: center;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  #display {
+    background: rgba(0,0,0,.95);
+    border: 1px solid #1226AA; 
+    color: white;
+    border-radius: 25px;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 10;
+  }
+
+  #specimen {
+    
+    width: auto;
+    max-width: 100%;
+  }
+
+  #display {
+    color: white;
+  }
+
+  .identification-wrapper {
+    display: flex;
+    align-items: end;
+    text-align: center;
+  }
+</style>
 <script>
-    document.querySelector('.exit-gallery').addEventListener('click', function() {
-      window.location.href = "/studio";
+  document.querySelector('.exit-gallery').addEventListener('click', function() {
+    window.location.href = "/studio";
+  })
+
+  function render(artifact, format, user, caption) {
+    document.getElementById('specimen').src = "/ugc/" + artifact + format;
+    document.getElementById('identification').innerHTML = `<div>
+        <p>${user}</p>
+        <p>${caption}</p>
+      </div>`
+    $('#display-wrapper').css({
+      "display": "flex",
     })
+  }
+
+  document.querySelector('#close-display').addEventListener('click', function() {
+    $('#display-wrapper').css({
+      'display': 'none'
+    })
+  })
+
+  document.querySelector('#toolkit').addEventListener('click', function() {
+    window.open( "https://starsetonline.com/toolkit/", '_blank' );
+  })
 </script>
 
 </html>
