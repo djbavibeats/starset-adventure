@@ -24,7 +24,7 @@ $(function() {
                         if (data.status === '200') {
                             this.echo('\nSerial Number found. Please enter matching email \nto authenticate.')
                             this.push(function(email) {
-                                this.echo(`\n---------------`)
+                                this.echo(`\nJRNERRZCVER`)
                                 this.echo(`\nDo you have the answers yet?\n`)
                                 this.push(function(answer) {
                                     let lowerCaseAnswer = answer.toLowerCase()
@@ -165,7 +165,7 @@ $(function() {
                                                                             setTimeout(() => {
                                                                                 video.play()
                                                                                 this.echo(`Thank you for watching.`)
-                                                                                this.echo(`\n---------------`)
+                                                                                this.echo(`\nJRNERRZCVER`)
                                                                                 this.echo(`\nDo you have the answers?\n`)
                                                                                 this.push(function(answer) {
                                                                                     if (answer !== 'correct') {
