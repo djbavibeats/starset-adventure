@@ -59,7 +59,11 @@ $(function() {
                                                         this.echo('Unknown command ' + cmd + '. Please enter a valid response.\n')
                                                     } else {
                                                         this.echo('\nTHANK YOU. ENJOY.')
-                                                        window.open(url, '_blank');
+                                                        // window.open(url, '_blank');
+                                                        let dl = document.createElement('a')
+                                                        dl.href = url
+                                                        dl.download = true
+                                                        dl.click()
                                                     }
                                                 }, {
                                                     prompt: ''
