@@ -168,14 +168,50 @@ $(function() {
                                                                                 this.echo(`\nJRNERRZCVER`)
                                                                                 this.echo(`\nDo you have the answers?\n`)
                                                                                 this.push(function(answer) {
-                                                                                    if (answer !== 'correct') {
-                                                                                        this.echo('\n[[;red;]ERROR. INCORRECT CODE. PREPARING TO BOOT USER.').pop().pop().pop().pop().pop()
-                                                                                        setTimeout(() => {
-                                                                                            let slug = window.location.hostname
-                                                                                            
-                                                                                            window.location.replace('https://' + slug + '/space')
-                                                                                        }, 1000)
+                                                                                    let lowerCaseAnswerInit = answer.toLowerCase()
+                                                                                    let bodyInit = {
+                                                                                        answer: lowerCaseAnswerInit
                                                                                     }
+                                                                                    fetch('/auth/unlock', {
+                                                                                        method: 'POST',
+                                                                                        mode: 'cors',
+                                                                                        cache: 'no-cache',
+                                                                                        headers: {
+                                                                                            'Content-Type': 'application/json'
+                                                                                        }, 
+                                                                                        body: JSON.stringify(bodyInit)
+                                                                                    }).then(resp => {
+                                                                                        resp.json().then(data => {
+                                                                                            this.clear()
+                                                                                            if (data.status !== '200') {
+                                                                                                this.echo('\n[[;red;]ERROR. INCORRECT CODE. PREPARING TO BOOT USER.').pop().pop().pop().pop().pop()
+                                                                                                setTimeout(() => {
+                                                                                                    setTimeout(() => {
+                                                                                                        let slug = window.location.hostname
+                                                                                                        
+                                                                                                        window.location.replace('https://' + slug + '/space')
+                                                                                                    }, 1000)
+                                                                                                }, 1000)
+                                                                                            } else {
+                                                                                                let url = data.slug
+                                                                                                this.echo(`\n[[;green;]SUCCESS. THANK YOU. \n\nPLEASE STORE THIS CODE IN A SECURE LOCATION \nAND AWAIT FURTHER INSTRUCTIONS. \n\nENTER COMMAND starset TO PROCEED. \n`).pop()
+                                                                                                this.push(function(cmd) {
+                                                                                                    if (cmd !== 'starset') {
+                                                                                                        this.echo('Unknown command ' + cmd + '. Please enter a valid response.\n')
+                                                                                                    } else {
+                                                                                                        this.echo('\nTHANK YOU. ENJOY.')
+                                                                                                        // window.open(url, '_blank');
+                                                                                                        let dl = document.createElement('a')
+                                                                                                        dl.href = url
+                                                                                                        dl.download = true
+                                                                                                        dl.click()
+                                                                                                    }
+                                                                                                }, {
+                                                                                                    prompt: ''
+                                                                                                })
+                                                                                            }
+                                                                                        })
+                                                                                    })
                                                                                 }, {
                                                                                     prompt: '> [[;blue;]INPUT REQUESTED: '
                                                                                 })
