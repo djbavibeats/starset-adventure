@@ -3,7 +3,7 @@ console.log('Encryption logger loaded!')
 $(function() {
     $('#terminal').terminal({
         init: function() {
-            this.echo('Hello! \n\nThank you for your participation in the BMI Beta \nVersion 2.0 test.\n')
+            this.echo('Hello. \n\nThank you for your participation in the BMI Beta \nVersion 2.0 test.\n')
             this.echo('To access your personal drive please enter the \nserial number you received upon initializing \nyour device:\n ')
             this.push(function(serial_number) {  
                 let serialNumber = {
