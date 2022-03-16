@@ -74,6 +74,7 @@
         <a-camera look-controls-enabled="true" ></a-camera>
         <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position=".7 3.25 -3" rotation="20 0 0"></a-image>
         <a-plane visible="false" onclick="openWebsite();" position="-18.15 1.576 -.807" width="1.5" height="1.75" rotation="0 90 0"></a-plane>
+        <a-plane visible="false"  id="beach-time" position="8.245 4.306 32.713" width="1.75" height="1.5" scale="5.494 6.663 6.663" rotation="0 177 0"></a-plane>
         <a-obj-model src="#star-obj" mtl="#star-mtl" position="-20.444 1 -.807" scale="10 10 10" 
         animation="property: rotation; to: 0 360 0; duration: 7000ms; easing: linear; loop: true;" 
         animation__2="property: position; to: -20.444 .6 -.807; from: -20.444 1 -.807; loop: true; easing: linear; dir: alternate;"
@@ -110,6 +111,10 @@
           }, 2500)
         }
     }
+
+    document.getElementById('beach-time').addEventListener('click', function() {
+        window.location.href = "/beach";
+    })
 
     document.addEventListener("DOMContentLoaded", function(event) {
     var scene = document.querySelector("a-scene");

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html id="content">
+  <head>
+    <% include _meta %>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- <script src="aframe.js"></script> -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+    <script src="/main.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/main.css">
+
+  </head>
+  <body>
+    <img id="hud" src="hud.png" class="hud-overlay" />
+    <div class="spotify-modal">
+      <iframe src="https://open.spotify.com/embed/album/0tJI0EBOHEcxov6V1ddIo7?utm_source=generator&amp;theme=0" width="100%" height="90%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      <button class="spotify-close-button" onclick="closeModal();">Close</button>
+    </div>
+    <div onclick="openModal();" class="spotify-open-button">OPEN MUSIC</div>
+    <div onclick="exitModal();" class="exit-button">EXIT</div>
+
+    <a-scene class="a-scene" cursor="rayOrigin: mouse; fuseTimeout: 0;" loading-screen="dotsColor: white; backgroundColor: black" vr-mode-ui="enabled: false">
+      <a-assets>  
+          <img id="vacation-mode" src="hud.png" />
+          <a-asset-item id="star-obj" src="star.obj"></a-asset-item>
+          <a-asset-item id="star-mtl" src="star.mtl"></a-asset-item>
+          <img id="beach-town" src="sandy-beach.png" />
+        </a-assets>
+        <!-- Background -->
+        <!-- 
+          animation="property: rotation; to: -20 360 0; dur: 15000ms; easing: linear; loop: true;" 
+        animation__2="property: position; to: -6 -3 -6; from: -6 -3 -6; loop: true; easing: linear; dir: alternate;"
+         -->
+<!-- position="-26.444 -17.872 6.894" rotation="0 145 0" scale="16 12 16" -->
+        <a-camera look-controls-enabled="true" look-controls="touchEnabled: true"></a-camera>        
+        <a-plane id="return-plane" visible="false" onclick="" position="9 3 -25" rotation="0 -20 0" scale="12 10 1"></a-plane>
+        <a-plane visible="false" onclick="openWebsite();" position="-7.5 1.6 -7.5" width="1.5" height="1.75" rotation="0 45 0"></a-plane>
+        <a-obj-model src="#star-obj" mtl="#star-mtl" position="-8 1 -8" scale="10 10 10" 
+        animation="property: rotation; to: 0 360 0; duration: 7000ms; easing: linear; loop: true;" 
+        animation__2="property: position; to: -8 .6 -8; from: -8 1 -8; loop: true; easing: linear; dir: alternate;"
+        >
+        </a-obj-model>
+
+        <a-sky src="#beach-town"></a-sky>
+
+    </a-scene>
+  </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+    var scene = document.querySelector("a-scene");
+    
+    })
+
+    document.getElementById('return-plane').addEventListener('click', () => {
+      window.location.href = "beach"
+    })
+</script>
+<script src="vacayMode.js"></script>
+
+</html>

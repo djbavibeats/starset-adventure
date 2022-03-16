@@ -40,6 +40,7 @@
           
         >
         </a-obj-model>
+        <a-entity visible="false" id="sewerLink" geometry="primitive: circle;" rotation="-85 0 0" scale="1.15 1.15 1" position="4.527 -6.489 14.65"></a-entity>
         <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position=".7 3.25 -3" rotation="20 0 0"></a-image>
         <a-sky src="#park"></a-sky>
 
@@ -51,7 +52,7 @@
     var scene = document.querySelector("a-scene");
     var vid = document.getElementById("video");
     var videoSphere = document.getElementById("videoSphere");
-
+    
     if (scene.hasLoaded) {
       run();
     } else {
@@ -80,6 +81,10 @@
           });
       }
     }
+
+    document.getElementById('sewerLink').addEventListener('click', function() {
+      window.location.href = "/sewer"
+    })
 
 
   })

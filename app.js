@@ -6,6 +6,8 @@ var fs = require('fs');
 require('dotenv').config()
 
 var routes = require("./routes");
+var authRoutes = require('./authRoutes')
+var mailchimpRoutes = require('./mailchimpRoutes')
 
 var app = express();
 app.use(bodyParser({ limit: '5mb' }))
@@ -18,7 +20,10 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(routes);
+app.use('/auth', authRoutes)
+app.use('/mailchimp', mailchimpRoutes)
 
+process.env.MESSAGE = "HAHAHA"
 app.listen(app.get("port"), function() {
   // console.log("App start on port " + app.get("port"));
 });

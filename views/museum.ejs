@@ -220,6 +220,8 @@
         <a-image id="WHERE_THE_SKIES_END" class="WHERE_THE_SKIES_END" src="#WHERE_THE_SKIES_END"  position="-17 0 40" rotation="0 180 0" scale="4.002 6 1"
           onclick="render('WALL/WHERE_THE_SKIES_END', '.png', 'Luke', 'WHERE_THE_SKIES_END');"
         ></a-image>
+        <a-plane visible="false" onclick="openDoor();" position="17.993 -3.373 -85"  scale="15 16 1" rotation="0 0 0"></a-plane>
+
         <a-sky src="#gallery"></a-sky>
 
     </a-scene>
@@ -267,8 +269,7 @@
     z-index: 10;
   }
 
-  #specimen {
-    
+  #specimen {  
     width: auto;
     max-width: 100%;
   }
@@ -304,6 +305,10 @@
       'display': 'none'
     })
   })
+
+  function openDoor() {
+    window.location.href = "/museum-two"
+  }
 
   document.querySelector('#toolkit').addEventListener('click', function() {
     window.open( "https://starsetonline.com/toolkit/", '_blank' );

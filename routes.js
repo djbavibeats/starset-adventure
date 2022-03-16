@@ -22,8 +22,16 @@ router.get("/studio", function(req, res) {
     res.render("studio")
 })
 
+router.get("/plaza", function(req, res) {
+    res.render("plaza")
+})
+
 router.get("/museum", function(req, res) {
     res.render("museum")
+})
+
+router.get("/museum-two", function(req, res) {
+    res.render("museum-two")
 })
 
 router.get("/park", function(req, res) {
@@ -32,6 +40,10 @@ router.get("/park", function(req, res) {
 
 router.get("/beach", function(req, res) {
     res.render("beach")
+})
+
+router.get("/beach-town", function(req, res) {
+    res.render("beach-town")
 })
 
 router.get("/island", function(req, res) {
@@ -46,12 +58,28 @@ router.get("/space", function(req, res) {
     res.render("space")
 })
 
+router.get("/sWLq4", function(req, res) {
+    res.render("sWLq4")
+})
+
+router.get("/sewer", function(req, res) {
+    res.render("sewer")
+})
+
+router.get("/apartment", function(req, res) {
+    res.render("apartment")
+})
+
 router.get("/exit", function(req, res) {
     res.render("exit")
 })
 
 router.get("/submission", function(req, res) {
     res.render("submission")
+})
+
+router.get("/encryption", function(req, res) {
+    res.render("encryption")
 })
 
 module.exports = router;

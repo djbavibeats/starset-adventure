@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html id="content">
+  <head>
+    <% include _meta %>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- <script src="aframe.js"></script> -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+    <script src="/main.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/main.css">
+
+  </head>
+  <body>
+    <img id="hud" src="hud.png" class="hud-overlay" />
+    <div class="spotify-modal">
+      <iframe src="https://open.spotify.com/embed/album/0tJI0EBOHEcxov6V1ddIo7?utm_source=generator&amp;theme=0" width="100%" height="90%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      <button class="spotify-close-button" onclick="closeModal();">Close</button>
+    </div>
+    <div onclick="openModal();" class="spotify-open-button">OPEN MUSIC</div>
+    <div onclick="exitModal();" class="exit-button">EXIT</div>
+
+    <a-scene class="a-scene" cursor="rayOrigin: mouse; fuseTimeout: 0;" loading-screen="dotsColor: white; backgroundColor: black" vr-mode-ui="enabled: false">
+      <a-assets>  
+          <img id="vacation-mode" src="hud.png" />
+          <a-asset-item id="star-obj" src="star.obj"></a-asset-item>
+          <a-asset-item id="star-mtl" src="star.mtl"></a-asset-item>
+          <a-asset-item id="picture_frame-obj" src="picture_frame/picture_frame.obj"></a-asset-item>
+          <a-asset-item id="picture_frame-mtl" src="picture_frame/picture_frame.mtl"></a-asset-item>
+
+          <img id="graffiti-two" src="lost_my_way.png" />
+          <img id="sewer" src="sewer.jpg" />
+        </a-assets>
+        <!-- Background -->
+        <a-image id="graffiti-two" opacity=".75" class="graffiti-two" src="#graffiti-two"  position="145 -60 365" rotation="2.126 -175.13 .499" scale="209.123 86.413 1.673"></a-image>
+
+        <a-camera look-controls-enabled="true" look-controls="touchEnabled: true"></a-camera>
+        <a-plane visible="false" onclick="openWebsite();" position="-10 3.45 -3" width="1.5" height="1.75" rotation="0 75 0"></a-plane>
+
+        </a-obj-model>
+        <a-obj-model id="picture_frame" src="#picture_frame-obj" mtl="#picture_frame-mtl" position="-12.5 1 -.5" rotation="0 80 0" scale="3 3 3"
+          animation="property: position; to: -12.5 1 .295; from: -12.5 0.75 .295; loop: true; easing: linear; dir: alternate;"
+        ></a-obj-model>
+        <a-entity light="type: ambient; color: #ffaf5a;" position="1 1 1"></a-entity>
+        <!-- #ffaf5a -->
+        <a-sky src="#sewer"></a-sky>
+
+    </a-scene>
+  </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+    var scene = document.querySelector("a-scene");
+    
+    document.getElementById('picture_frame').addEventListener('click', function() {
+        window.location.href = "/apartment";
+    })
+    })
+</script>
+<script src="vacayMode.js"></script>
+
+</html>

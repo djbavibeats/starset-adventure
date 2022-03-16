@@ -33,6 +33,7 @@
         </a-assets>
         <!-- Background -->
         <a-camera look-controls-enabled="true" look-controls="touchEnabled: true;"></a-camera>
+        <a-plane class="boatOneLink" visible="false" position="1.5 4 45" rotation="0 -180 0" scale="10 15 0"></a-plane>
         <a-box onclick="nextScene();" visible="false" position="10.6 -1.525 -0.033" rotation="0 8.5 0" height="1" width="17.37" depth="50"></a-box>
         <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position=".7 3.25 -3" rotation="20 0 0"></a-image>
         <a-videosphere ios-video-fix id="videoSphere" src="#video"  muted></a-videosphere>
@@ -78,6 +79,10 @@
           });
       }
     }
+
+    document.querySelector('.boatOneLink').addEventListener('click', function() {
+      window.location.href = "/village-one";
+    })
 
 
   })

@@ -1,80 +1,194 @@
 <!DOCTYPE html>
 <html id="content">
-  <% include _meta %>
+    <% include _meta %>
 
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <meta content="width=device-width, initial-scale=1 user-scalable=0" name="viewport" />
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/28fbef8869.js" crossorigin="anonymous"></script>
   
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
   <link rel="stylesheet" href="/main.css">
-
-  <script>
-    window.onload = function () {
-        let r = Math.floor(Math.random() * (0 - 38) + 38);
-        let queryString = "";
-        switch(r) {
-            case 0: case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:
-                queryString = "/arctic"
-                break;
-            case 10: case 11: case 12: case 13: case 14: case 15: case 16: case 17: case 18: case 19:
-                queryString = "/park"
-                break;
-            case 20: case 21: case 23: case 24: case 25: case 26: case 27:
-                queryString = "/village-one"
-                break;
-            case 28: case 29: case 30: case 30: case 31:
-                queryString = "/island"
-                break;
-            case 32: case 33: case 34: case 35: case 36:
-                queryString = "/beach"
-                break;
-            case 37:
-                queryString = "/space"
-                break;
-            default:
-                queryString = "/village-one"
-                break;
-        }
-        document.querySelector(".activate-button").addEventListener("click", function () {
-          window.location.href = queryString
-        });
-    };
-  </script>
   <style>
-   
-
-    .activate-button {
-      width: 100px;
-      height: auto;
-      margin: 0 auto;
-      position: absolute;
-      bottom: 3%;
-      left: 0;
-      right: 0;
-      z-index: 1;
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* width: 100vw; */
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background: black;
+        color: white;
+        font-size: 12px;
+        padding: 25%;
     }
-  </style>
-  <body style="margin : 0px; overflow: hidden;">
-    <div class="optimize-modal"><div class='modal-content'>
-      <p>Welcome to the BMI Beta Test v1.2.00</p>
-      <p>For optimal experience, open on a mobile device.</p>
-      <button id="optimize-modal-close">Close</button>
-  </div></div>
-    <!-- <div class="modal"> -->
-        <!-- <div class="modal-content"> -->
-            <!-- <p>Welcome to the BMI Beta test. Please press the button below to initialize your experience.</p> -->
-            <!-- <button class="activate-button"></button> -->
-            <img class="activate-button" src="activate.png"></img>
-        <!-- </div> -->
-    <!-- </div> -->
 
-    <a-scene embedded arjs vr-mode-ui="enabled: false">
-      <a-marker preset="hiro">
-      </a-marker>
-      <a-camera look-controls-enabled="true" look-controls="touchEnabled: false;"></a-camera>
-    </a-scene>
-  </body>
-  <script src="main.js"></script>
+    #emotion {
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    .exit-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 90vh;
+        padding: 0 25px;
+    }
+
+    .exit-row-one {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 25px;
+        margin-top: 25px;
+    }
+
+    .exit-row-two {
+        display: flex;
+        flex-direction: column;
+    }
+    .exit-text-container {
+        /* padding: 50px; */
+        position: relative;
+        z-index: 10;
+        text-align: left;
+        padding-left: 15px;
+    }
+
+    .initialize-experience-button {
+        border-radius: 7px;
+        background: none;
+        width: 100%;
+        margin-bottom: 5px;
+        border: none;
+        color: white;
+        padding: 0 25px;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .initialize-checkbox {
+        float: none;
+    }
+
+    .vacation-mode-button {
+      opacity: 0;
+      margin-top: 15px;
+      transition: opacity 1000ms;
+    }
+
+    canvas {
+    position: absolute;
+    top: 1%; 
+    }
+
+    #unset-emotion {
+        display: none;
+    }
+
+    .exit-row-three {
+        bottom: 5%;
+        float: right;
+    }
+
+    .share-social-link {
+        color: white;
+        text-decoration: none;
+        text-align: left;
+        padding: 0 50px;
+        margin-bottom: 5px;
+        margin-top: 0px;
+    }
+
+
+  </style>
+
+ <body style="margin : 0px; padding: 0px;">
+
+    <div class='logo-wrapper'>
+        <img class="logo" src="logo.png">
+    </div>
+    <div class="exit-container">
+        <div class="exit-row-one">
+            <video id="video" style="object-fit: fit;" width="200" height="200"  autoplay playsinline muted webkit-playsinline></video>
+            <div class='exit-text-container'>
+                <p>Welcome to the BMI Beta</p>
+                <p id="emotion">PENDING<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+            </div>
+        </div>
+        <div class="exit-row-two">
+            <p style="text-align: center; font-size: 12px;">Please confirm your emotion to initialize your BMI Experience.</p>
+            <button id="set-emotion" class='initialize-experience-button'>Confirm Emotion <i class="fal fa-square initialize-checkbox"></i></button>
+            <button id="unset-emotion" class='initialize-experience-button'>Reset Emotion <i class="fal fa-check-square initialize-checkbox"></i></button>
+            <button id="initialize-vacation-mode" class="vacation-mode-button">Initialize Vacation Mode</button>
+        </div>
+        <div class="exit-row-three">
+            <p style="font-size: 12px;">Beta v2.0.00</p>
+        </div>
+    </div>
+</body>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+    <script src="webcam.js" type="module"></script>
+    <script>    
+    const enter = new Audio('enter.wav');
+    // BEGIN EMOTION DETECTION FOR INIT SEQUENCE
+    document.getElementById('set-emotion').addEventListener("click", function() {
+      // if (document.getElementById('emotion').innerHTML)
+      if (document.getElementById('emotion').innerHTML.substring(0,4) === 'PEND') {
+        console.log("Not Ready");
+      } else {
+          video.pause()
+          document.getElementById('set-emotion').style.display = 'none';
+          document.getElementById('unset-emotion').style.display = 'block';
+          document.querySelector('.vacation-mode-button').style.opacity = 1;
+          enter.play();
+        }
+    })
+
+
+    document.getElementById('unset-emotion').addEventListener("click", function() {
+        video.play()
+        document.getElementById('unset-emotion').style.display = 'none';
+        document.getElementById('set-emotion').style.display = 'block';
+        document.querySelector('.vacation-mode-button').style.opacity = 0;
+    })
+
+    document.getElementById('initialize-vacation-mode').addEventListener("click", function() {
+      let emotion = document.getElementById('emotion').innerHTML;
+      switch(emotion) {
+        case ('neutral'):
+          queryString = "/park";
+          break;
+        case ('happy'):
+          queryString = "/arctic";
+          break;
+        case ('sad'):
+          queryString = "/beach";
+          break;
+        case ('angry'):
+          queryString = "/island";
+          break;
+        case ('fearful'):
+          queryString = "/village-one";
+          break;
+        case ('disgusted'):
+          queryString = "/plaza";
+          break;
+        case ('surprised'):
+          queryString = "/space";
+          break;
+        default:
+          queryString = "/village-one";
+          break;
+      }
+      window.location.href = queryString;
+    })
+    // END EMOTION DETECTION FOR INIT SEQUENCE
+    </script>
+    
 </html>

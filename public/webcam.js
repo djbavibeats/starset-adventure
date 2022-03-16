@@ -44,18 +44,27 @@ video.addEventListener('playing', () => {
     }, 100);
 
 })
-document.getElementById('lock-emotion').addEventListener("click", function() {
-    video.pause()
-    document.getElementById('reset-emotion').style.display = 'block';
-    document.getElementById('lock-emotion').style.display = 'none';
-})
 
+
+document.getElementById('lock-emotion').addEventListener("click", function() {
+    if (document.getElementById('emotion').innerHTML.substring(0,4) === 'PEND') { 
+        console.log("pending");
+    } else {
+        video.pause()
+        document.getElementById('reset-emotion').style.display = 'block';
+        document.getElementById('lock-emotion').style.display = 'none';
+        document.getElementById('percentage').style.display = 'block';
+    }
+})
 
 document.getElementById('reset-emotion').addEventListener("click", function() {
     video.play()
     document.getElementById('reset-emotion').style.display = 'none';
     document.getElementById('lock-emotion').style.display = 'block';
+    document.getElementById('percentage').style.display = 'none';
 })
+
+
 
 document.getElementById('share-socials-twitter').addEventListener("click", function() {
     document.getElementById('share-social-button').innerHTML = '2. Share experience to socials. <i class="fal fa-check-square exit-checkbox"></i>'

@@ -38,6 +38,7 @@
         <a-camera look-controls-enabled="true"  look-controls="touchEnabled: true;"></a-camera>
         <a-image id="vacationMode" class="vacationMode" opacity=".5" src="#vacation-mode"  position=".7 3.25 -3" rotation="20 0 0"></a-image>
         <a-plane visible="false" onclick="openWebsite();" position="-6.5 10.3 10" width="1.5" height="1.75" rotation="0 140 0"></a-plane>
+        <a-plane visible="false" id="goToTown" position="105 23.373 50" scale="25 35 1" height="1" width="1" rotation="0 -124 0"></a-plane>
         <a-obj-model src="#star-obj" mtl="#star-mtl" position="-6.5 3 10" scale="10 10 10" 
         animation="property: rotation; to: 0 360 0; duration: 7000ms; easing: linear; loop: true;" 
         animation__2="property: position; to: -6.5 9.6 10; from: -6.5 10 10; loop: true; easing: linear; dir: alternate;"
@@ -82,6 +83,11 @@
           });
       }
     }
+
+    document.getElementById('goToTown').addEventListener('click', () => {
+      console.log("Go! To! Town!")
+      window.location.href = "/beach-town"
+    })
 
 
   })

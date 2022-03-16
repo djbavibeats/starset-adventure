@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html id="content">
+  <head>
+    <% include _meta %>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- <script src="aframe.js"></script> -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script src="/main.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/main.css">
+
+  </head>
+  <body>
+    <img id="hud" src="hud.png" class="hud-overlay" />
+    <div class="spotify-modal">
+      <iframe src="https://open.spotify.com/embed/album/0tJI0EBOHEcxov6V1ddIo7?utm_source=generator&amp;theme=0" width="100%" height="90%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+      <button class="spotify-close-button" onclick="closeModal();">Close</button>
+    </div>
+    <div onclick="openModal();" class="spotify-open-button">OPEN MUSIC</div>
+    <div onclick="exitModal();" class="exit-button">EXIT</div>
+
+    <a-scene class="a-scene" cursor="rayOrigin: mouse; fuseTimeout: 0;" loading-screen="dotsColor: white; backgroundColor: black" vr-mode-ui="enabled: false">
+      <a-assets>  
+          <img id="vacation-mode" src="hud.png" />
+          <img id="gallery" src="gallery_two.png" />
+          <!-- CURATED IMAGES -->
+          <!-- LEFT WALL -->
+          <img id="meetings_three" src="/ugc/EXHIBIT_TWO/meetings_three.jpg" />
+          <img id="claudia" src="/ugc/EXHIBIT_TWO/claudia.jpg" />
+          <img id="saturn_v" src="/ugc/EXHIBIT_TWO/saturn_v.jpg" />
+          <img id="YO" src="/ugc/EXHIBIT_TWO/YO.jpg" />
+          <img id="STAR_TRAILS" src="/ugc/EXHIBIT_TWO/STAR_TRAILS.jpg" />
+          <img id="two_sides" src="/ugc/EXHIBIT_TWO/two_sides.jpg" />
+          <img id="FOREVER" src="/ugc/EXHIBIT_TWO/FOREVER.jpg" />
+          <img id="astronaut" src="/ugc/EXHIBIT_TWO/astronaut.jpg" />
+          <img id="SOMETHING_WICKED" src="/ugc/EXHIBIT_TWO/SOMETHING_WICKED.jpeg" />
+          <img id="BLADE_RUNNER" src="/ugc/EXHIBIT_TWO/BLADE_RUNNER.png" />
+          <!-- END LUKES WALL -->
+          <!-- END CURATED IMAGES -->
+          <img id="museum_sign" src="museum_sign.png" />
+        </a-assets>
+        <!-- Background -->
+        <a-camera look-controls-enabled="true" look-controls="touchEnabled: true;" rotation="0 -180 0"></a-camera>
+        <a-text class="main-gallery-one" text="value: Return to; color: black;" scale="25 25 25" rotation="0 270 0" position="124 6.5 82"></a-text>
+        <a-text class="main-gallery-two" text="value: Main Gallery; color: black;" scale="25 25 25" rotation="0 270 0" position="124 0 82"></a-text>
+        <a-image id="museum_sign" class="museum_sign" src="#museum_sign"  position="124 6.5 1" rotation="0 270 0" scale="50.596 13 1"></a-image>
+        <!-- BEGIN CURATION -->
+
+        <!-- MEETINGS_THREE -->
+        <!-- .1.33333 -->
+        <!-- Dustin was so excited he forgot his mask at first. Note the homemade duct-tape shirt with the symbols for Alchemy, Icarus, and Into the Breach. -->
+        <!-- Andreanna (instagram @aldz.exe) -->
+        <a-image id="meetings_three" class="meetings_three" src="#meetings_three"  position="48 8 85" rotation="0 180 0" scale="39.99999 30 1"
+          onclick="render('EXHIBIT_TWO/meetings_three', '.jpg', 'Andreanna (instagram @aldz.exe)', 'Dustin was so excited he forgot his mask at first. Note the homemade duct-tape shirt with the symbols for Alchemy, Icarus, and Into the Breach.');"
+        ></a-image>
+
+        <!-- STARLIGHT -->
+        <!-- 1.3456 -->
+        <!-- Starlight -->
+        <!-- Claudia -->
+        <a-image id="claudia" class="claudia" src="#claudia"  position="0 8 85" rotation="0 180 0" scale="40.368 30 1"
+          onclick="render('EXHIBIT_TWO/claudia', '.jpg', 'Claudia', 'Starlight');"
+        ></a-image>    
+        
+        <!-- SATURN V -->
+        <!-- .4 -->
+        <!-- Saturn V -->
+        <!-- Clayton -->
+        <a-image id="saturn_v" class="saturn_v" src="#saturn_v"  position="-48 7 85" rotation="0 180 270" scale="18 45 1"
+          onclick="render('EXHIBIT_TWO/saturn_v', '.jpg', 'Clayton', 'The best Lego Saturn V');"
+        ></a-image>    
+        
+        <!-- YO -->
+        <!-- 1 -->
+        <!-- Horizons -->
+        <!-- Eduardo -->
+        <a-image id="YO" class="YO" src="#YO"  position="-100 8 80" rotation="0 90 0" scale="45 45 1"
+          onclick="render('EXHIBIT_TWO/YO', '.jpg', 'Eduardo', 'Horizons');"
+        ></a-image>    
+
+        <!-- STAR TRAILS -->
+        <!-- 1.5 -->
+        <!-- Star Trails -->
+        <!-- Kayla -->
+        <a-image id="STAR_TRAILS" class="STAR_TRAILS" src="#STAR_TRAILS"  position="-100 7 9" rotation="0 90 0" scale="75 37.5 1"
+          onclick="render('EXHIBIT_TWO/star_trails', '.jpg', 'Kayla', 'Star Trails');"
+        ></a-image>    
+
+        <!-- Two Sides -->
+        <!-- 1.33333 -->
+        <!-- My Drawing -->
+        <!-- Taeri -->
+        <a-image id="two_sides" class="two_sides" src="#two_sides"  position="-100 7 -70" rotation="0 90 0" scale="59.99999 45 1"
+          onclick="render('EXHIBIT_TWO/two_sides', '.jpg', 'Taeri', 'My Drawing');"
+        ></a-image>            
+
+        <!-- FOREVER -->
+        <!-- .75 -->
+        <!-- Starset Forever -->
+        <!-- Ethan -->
+        <a-image id="FOREVER" class="FOREVER" src="#FOREVER"  position="-48 7 -85" rotation="0 0 0" scale="28.5 38 1"
+          onclick="render('EXHIBIT_TWO/FOREVER', '.jpg', 'Ethan', 'STARSET FOREVER');"
+        ></a-image>    
+        
+        <!-- ASTRONAUT -->
+        <!-- 1 -->
+        <!-- Astronaut -->
+        <!-- Yordi Camilo -->
+        <a-image id="astronaut" class="astronaut" src="#astronaut"  position="0 7 -85" rotation="0 -0 0" scale="38 38 1"
+          onclick="render('EXHIBIT_TWO/astronaut', '.jpg', 'Yordi Camilo', 'Astronaut');"
+        ></a-image>    
+
+        <!-- SOMETHING WICKED -->
+        <!-- .6316 -->
+        <!-- SOMETHING WICKED -->
+        <!-- Victoria -->
+        <a-image id="SOMETHING_WICKED" class="SOMETHING_WICKED" src="#SOMETHING_WICKED"  position="45 7 -85" rotation="0 -0 0" scale="24 38 1"
+          onclick="render('EXHIBIT_TWO/star_trails', '.jpeg', 'Victoria', 'SOMETHING WICKED');"
+        ></a-image>    
+
+        <!-- BLADE RUNNER -->
+        <!-- 1 -->
+        <!-- BLADE RUNNER -->
+        <!-- Mike -->
+        <a-image id="BLADE_RUNNER" class="BLADE_RUNNER" src="#BLADE_RUNNER"  position="100 7 -60" rotation="0 270 0" scale="45 45 1"
+          onclick="render('EXHIBIT_TWO/BLADE_RUNNER', '.png', 'Mike', 'BLADE RUNNER');"
+        ></a-image>    
+
+        <a-plane visible="false" onclick="mainGallery();" position="123.71 -3.006 55.976"  scale="45 54 1" rotation="0 270 0"></a-plane>
+
+        <a-sky src="#gallery"></a-sky>
+
+    </a-scene>
+    <div id="display-wrapper"><div id="display">
+      <div id="close-display">X</div>
+      <div class="specimen-wrapper">
+        <img id="specimen" />
+      </div>
+      <div class="identification-wrapper">
+        <div id="identification"></div>
+      </div>
+    </div></div>
+  </body>
+<style>
+  #close-display {
+    position: relative;
+    right: -140px;
+    top: -25px;
+  }
+
+  #display-wrapper {
+    display: none;
+    position: absolute;
+    align-items: center;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  #display {
+    background: rgba(0,0,0,.95);
+    border: 1px solid #1226AA; 
+    color: white;
+    border-radius: 25px;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    align-items: center;
+    margin: 0 auto;
+    z-index: 10;
+  }
+
+  #specimen {  
+    width: auto;
+    max-width: 100%;
+  }
+
+  #display {
+    color: white;
+  }
+
+  .identification-wrapper {
+    display: flex;
+    align-items: end;
+    text-align: center;
+  }
+</style>
+<script>
+  document.querySelector('.main-gallery-one').addEventListener('click', function() {
+    window.location.href = "/museum";
+  })
+
+  document.querySelector('.main-gallery-two').addEventListener('click', function() {
+    window.location.href = "/museum";
+  })
+
+  function render(artifact, format, user, caption) {
+    document.getElementById('specimen').src = "/ugc/" + artifact + format;
+    document.getElementById('identification').innerHTML = `<div>
+        <p>${user}</p>
+        <p>${caption}</p>
+      </div>`
+    $('#display-wrapper').css({
+      "display": "flex",
+    })
+  }
+
+  document.querySelector('#close-display').addEventListener('click', function() {
+    $('#display-wrapper').css({
+      'display': 'none'
+    })
+  })
+
+  function mainGallery() {
+    window.location.href = "/museum";
+  }
+</script>
+
+</html>
